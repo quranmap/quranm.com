@@ -247,10 +247,10 @@ const dataPromise = loadQuranData()
    - fallback: tries local ./<basename>.json if path fails (dev)
    ============================================================================ */
 
-// ✅ R2 Custom Domain (Audio Bucket) – MUSS vor TRANSLATIONS/WORD/RECITER existieren
+// ✅ R2 Custom Domain (Audio Bucket) – muss VOR den Translation-Konstanten existieren
 const AUDIO_BASE_URL = "https://audio.quranm.com";
 
-// ✅ Translations (liegen jetzt in R2 unter https://audio.quranm.com/translate/FINAL/...)
+// ✅ Translations liegen jetzt in R2 unter https://audio.quranm.com/translate/FINAL/...
 const TRANSLATIONS_ROOT = `${AUDIO_BASE_URL}/translate/FINAL`;
 const TRANSLATIONS_INDEX_URL = `${TRANSLATIONS_ROOT}/translations_index.json`;
 const MAX_ACTIVE_TRANSLATIONS = 10;
