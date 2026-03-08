@@ -6883,6 +6883,34 @@ function stopSurahQueue() {
   // ✅ Small Surah Pause Button aus
   try { setSuraPauseUI(false, false); } catch(e){}
   try { __resetSuraPlayProgressState(); } catch(e){}
+
+  // ✅ iOS FIX: manchmal “repaintet” Safari nach STOP nicht -> alles wirkt weg bis scroll
+  // Wir triggern einen harmlosen Reflow + mini scrollTop nudge im Scroll-Container.
+  try{
+    const v =
+      document.querySelector(".qView") ||
+      document.querySelector(".mView") ||
+      null;
+
+    if (v) {
+      const st = v.scrollTop;
+
+      // layer/reflow
+      v.style.transform = "translateZ(0)";
+      void v.offsetHeight;
+
+      // mini nudge (unsichtbar)
+      v.scrollTop = st + 1;
+      v.scrollTop = st;
+
+      requestAnimationFrame(() => {
+        v.style.transform = "";
+      });
+    }
+
+    // zusätzlich: manche iPhones brauchen ein “resize” ping
+    window.dispatchEvent(new Event("resize"));
+  }catch(e){}
 }
 
 function startSurahPlayback(surahNo, { fromAyah = 1, btn = null } = {}) {

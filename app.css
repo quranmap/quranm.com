@@ -486,6 +486,15 @@ html[data-theme="light"] .suraTick:hover::after{
 }
 
 *{ box-sizing:border-box; }
+
+/* ✅ iOS/Browser UI Farben (Range-Slider + Scroll-Indikator) passend zum Theme */
+html{
+  color-scheme: dark;
+}
+html[data-theme="light"]{
+  color-scheme: light;
+}
+
 html,body{ height:100%; margin:0; }
 
 body{
@@ -6711,8 +6720,8 @@ html[data-theme="light"] .acctBtnSmall{ background: var(--c-ink-04); }
 /* ✅ Icon wie styleIcon: 70% und sauber zentriert */
 .surfaceIcon{
   /* ✅ Größe = abhängig von Auflösung (stage-h) */
-  width:  calc(var(--stage-h) * 0.011);
-  height: calc(var(--stage-h) * 0.011);
+  width:  calc(var(--stage-h) * 0.008);
+  height: calc(var(--stage-h) * 0.008);
   display: block;
   pointer-events: none;
 
