@@ -6947,3 +6947,58 @@ html[data-theme="light"] .bar-bottom::before{
   -webkit-mask-image: none !important;
   mask-image: none !important;
 }
+
+
+/* =========================
+   ✅ FIX: Dropdown Scrollbars (Darkmode) + Touch Scroll Reliability
+   - sorgt dafür, dass die Scrollbars in Sura/Reciter/Translation/Font Dropdowns NICHT schwarz sind
+   - sorgt dafür, dass Scrollen auf iOS/Android/PC zuverlässiger geht
+   - nutzt NUR Root-Farben/Tokens
+   ========================= */
+
+/* 1) Scrollen auf Touch-Geräten zuverlässig erlauben */
+.qView, .mView, .welcomeBody,
+.suraDropMenu, .recDropMenu, .trDropMenu, .fontDropMenu{
+  touch-action: pan-y;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* 2) Dropdown-Menüs: hübsche Scrollbars (Darkmode default) */
+.suraDropMenu, .recDropMenu, .trDropMenu, .fontDropMenu{
+  scrollbar-width: thin; /* Firefox */
+  scrollbar-color: var(--fx-scroll-fill) transparent;
+}
+
+/* WebKit (Chrome/Edge/Safari) */
+.suraDropMenu::-webkit-scrollbar,
+.recDropMenu::-webkit-scrollbar,
+.trDropMenu::-webkit-scrollbar,
+.fontDropMenu::-webkit-scrollbar{
+  width: var(--sb-w);
+}
+
+.suraDropMenu::-webkit-scrollbar-track,
+.recDropMenu::-webkit-scrollbar-track,
+.trDropMenu::-webkit-scrollbar-track,
+.fontDropMenu::-webkit-scrollbar-track{
+  background: var(--c-w-06);
+  border-radius: var(--round-pill);
+}
+
+.suraDropMenu::-webkit-scrollbar-thumb,
+.recDropMenu::-webkit-scrollbar-thumb,
+.trDropMenu::-webkit-scrollbar-thumb,
+.fontDropMenu::-webkit-scrollbar-thumb{
+  background: var(--fx-scroll-fill);
+  border-radius: var(--round-pill);
+  border: calc(var(--u1h) * 2) solid transparent;
+  background-clip: padding-box;
+}
+
+/* 3) Lightmode: Track etwas dunkler (damit sichtbar auf weiß) */
+html[data-theme="light"] .suraDropMenu::-webkit-scrollbar-track,
+html[data-theme="light"] .recDropMenu::-webkit-scrollbar-track,
+html[data-theme="light"] .trDropMenu::-webkit-scrollbar-track,
+html[data-theme="light"] .fontDropMenu::-webkit-scrollbar-track{
+  background: var(--c-ink-06);
+}
