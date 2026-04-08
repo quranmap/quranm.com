@@ -102,11 +102,25 @@ function cancelScheduledRender(id) {
 
 function isPhoneDevice() {
   const ua = navigator.userAgent || "";
-  const uaMobile = /Mobi|Android|iPhone|iPod/i.test(ua);
-  const uaIpad = /iPad/i.test(ua);
-
   const mobileHint =
     (navigator.userAgentData && navigator.userAgentData.mobile) === true;
+
+  const isTesla = /Tesla|QtCarBrowser/i.test(ua);
+  const isIPhone = /iPhone|iPod/i.test(ua);
+  const isAndroid = /Android/i.test(ua);
+  const isAndroidPhone = isAndroid && /Mobile/i.test(ua);
+
+  // iPadOS kann sich als Macintosh melden, wenn Touch aktiv ist.
+  const isIPad =
+    /iPad/i.test(ua) ||
+    (/Macintosh/i.test(ua) && (navigator.maxTouchPoints || 0) > 1);
+
+  const isAndroidTablet = isAndroid && !/Mobile/i.test(ua);
+
+  const desktopLikeUA =
+    /Windows NT|Macintosh|X11|CrOS|Linux x86_64/i.test(ua) &&
+    !isAndroid &&
+    !isIPhone;
 
   let coarse = false;
   try {
@@ -116,10 +130,17 @@ function isPhoneDevice() {
   }
 
   const touch = (navigator.maxTouchPoints || 0) > 0;
+  const smallestCssSide = Math.min(window.innerWidth || 0, window.innerHeight || 0);
+  const hasPhoneViewport = smallestCssSide > 0 && smallestCssSide <= 540;
 
-  // "Phone": mobile UA OR (coarse + touch), but exclude iPad explicitly
-  const maybePhone = (uaMobile || mobileHint || (coarse && touch)) && !uaIpad;
-  return !!maybePhone;
+  if (isTesla || isIPad || isAndroidTablet) return false;
+  if (mobileHint || isIPhone || isAndroidPhone) return true;
+
+  // Fallback für Browser ohne sauberes Mobile-Flag,
+  // aber nur bei echter Smartphone-Größe – nicht bei Tesla/Touch-Desktops.
+  if (!desktopLikeUA && coarse && touch && hasPhoneViewport) return true;
+
+  return false;
 }
 
 function recalc() {
@@ -645,6 +666,164 @@ function __isLoggedIn(){
   return __isAuthFresh();
 }
 
+const READER_SCORE_MAX = 1000000000;
+const HIFZ_SCORE_MAX = 1000000000;
+const LS_ACC_SYNC_LAST_AT = "q_account_sync_last_at_v1";
+const LS_ACC_SYNC_STATUS = "q_account_sync_status_v1";
+const LS_ACC_SYNC_MODE = "q_account_sync_mode_v1";
+
+function getReaderScoreValue(){
+  const candidateKeys = [
+    "q_reader_score_v1",
+    "quranm_reader_score_v1",
+    "q_readerScore_v1",
+    "quranm_readerScore_v1"
+  ];
+
+  for (const key of candidateKeys) {
+    let raw = "";
+    try { raw = String(localStorage.getItem(key) || "").trim(); } catch { raw = ""; }
+    if (!raw) continue;
+
+    if (/^\d+$/.test(raw)) {
+      return Math.max(0, Math.min(READER_SCORE_MAX, Math.round(Number(raw) || 0)));
+    }
+
+    try{
+      const parsed = JSON.parse(raw);
+      if (Number.isFinite(Number(parsed?.score))) {
+        return Math.max(0, Math.min(READER_SCORE_MAX, Math.round(Number(parsed.score) || 0)));
+      }
+      if (Number.isFinite(Number(parsed?.value))) {
+        return Math.max(0, Math.min(READER_SCORE_MAX, Math.round(Number(parsed.value) || 0)));
+      }
+    }catch{}
+  }
+
+  return 0;
+}
+
+function getHifzScoreValue(){
+  return 0;
+}
+
+function refreshAccountScores(){
+  const readerEl = document.getElementById("acctReaderScoreValue");
+  const hifzEl = document.getElementById("acctHifzScoreValue");
+
+  if (!readerEl && !hifzEl) return;
+
+  const inOk = __isLoggedIn();
+
+  if (readerEl) {
+    const readerScore = inOk ? getReaderScoreValue() : 0;
+    readerEl.textContent = `${readerScore}/${READER_SCORE_MAX}`;
+  }
+
+  if (hifzEl) {
+    const hifzScore = inOk ? getHifzScoreValue() : 0;
+    hifzEl.textContent = `${hifzScore}/${HIFZ_SCORE_MAX}`;
+  }
+}
+
+function __formatAccountSyncTime(ts){
+  const n = Number(ts || 0);
+  if (!Number.isFinite(n) || n <= 0) return "—";
+
+  try{
+    return new Intl.DateTimeFormat(undefined, {
+      day: "2-digit",
+      month: "2-digit",
+      hour: "2-digit",
+      minute: "2-digit"
+    }).format(new Date(n));
+  }catch{
+    return "—";
+  }
+}
+
+function __getAccountSyncSnapshot(){
+  let status = "idle";
+  let mode = "";
+  let lastAt = 0;
+
+  try { status = String(localStorage.getItem(LS_ACC_SYNC_STATUS) || "idle"); } catch {}
+  try { mode = String(localStorage.getItem(LS_ACC_SYNC_MODE) || ""); } catch {}
+  try { lastAt = Number(localStorage.getItem(LS_ACC_SYNC_LAST_AT) || "0"); } catch {}
+
+  return { status, mode, lastAt };
+}
+
+function __setAccountSyncUiState(status, { mode="", save=true } = {}){
+  const safeStatus = String(status || "").trim() || "idle";
+  const safeMode = String(mode || "").trim();
+
+  if (save) {
+    try { localStorage.setItem(LS_ACC_SYNC_STATUS, safeStatus); } catch {}
+    try {
+      if (safeMode) localStorage.setItem(LS_ACC_SYNC_MODE, safeMode);
+      else localStorage.removeItem(LS_ACC_SYNC_MODE);
+    } catch {}
+  }
+
+  try { window.__refreshAccountSyncUi?.(); } catch {}
+}
+
+function __markAccountSynced(mode="live"){
+  const now = Date.now();
+  try { localStorage.setItem(LS_ACC_SYNC_LAST_AT, String(now)); } catch {}
+  __setAccountSyncUiState("synced", { mode });
+}
+
+function __refreshAccountSyncUi(){
+  const statusEl = document.getElementById("acctSyncStatusValue");
+  const lastEl = document.getElementById("acctSyncLastValue");
+  const toolsEl = document.getElementById("acctSyncTools");
+  const hintEl = document.getElementById("acctSyncHint");
+
+  if (toolsEl) toolsEl.hidden = !__isLoggedIn();
+  if (hintEl) hintEl.hidden = !__isLoggedIn();
+
+  if (!statusEl || !lastEl) return;
+
+  if (!__isLoggedIn()) {
+    statusEl.textContent = "Local only";
+    lastEl.textContent = "—";
+    return;
+  }
+
+  const snap = __getAccountSyncSnapshot();
+
+  let statusText = "Ready";
+
+  if (snap.status === "pending") {
+    statusText = snap.mode === "live" ? "Pending live sync" : "Pending sync";
+  } else if (snap.status === "syncing") {
+    if (snap.mode === "login") statusText = "Syncing login…";
+    else if (snap.mode === "live") statusText = "Syncing live…";
+    else if (snap.mode === "account") statusText = "Loading account…";
+    else statusText = "Syncing…";
+  } else if (snap.status === "synced") {
+    if (snap.mode === "login") statusText = "Synced after login";
+    else if (snap.mode === "live") statusText = "Live synced";
+    else if (snap.mode === "account") statusText = "Synced from account";
+    else statusText = "Synced";
+  } else if (snap.status === "error") {
+    if (snap.mode === "login") statusText = "Login sync error";
+    else if (snap.mode === "live") statusText = "Live sync error";
+    else if (snap.mode === "account") statusText = "Account load error";
+    else statusText = "Sync error";
+  }
+
+  statusEl.textContent = statusText;
+  lastEl.textContent = __formatAccountSyncTime(snap.lastAt);
+}
+
+window.__refreshAccountScores = refreshAccountScores;
+window.__refreshAccountSyncUi = __refreshAccountSyncUi;
+window.__setAccountSyncUiState = __setAccountSyncUiState;
+window.__markAccountSynced = __markAccountSynced;
+
 let __syncTimer = 0;
 let __syncInFlight = false;
 
@@ -782,7 +961,12 @@ function __applyAccountStateToLocal(state){
       localStorage.setItem(LS_FAV_PRESETS, JSON.stringify(state.favPresets));
     }
     if (typeof state?.favActivePreset === "string" && state.favActivePreset.trim()) {
-      localStorage.setItem(LS_FAV_ACTIVE_PRESET, String(state.favActivePreset));
+      const nextFavActivePreset = normalizePresetName(String(state.favActivePreset)) || "actual";
+      localStorage.setItem(LS_FAV_ACTIVE_PRESET, nextFavActivePreset);
+
+      // ✅ Wichtig: laufenden In-Memory-Stand sofort angleichen,
+      // damit UI/Render direkt mit dem geladenen Account-Stand arbeiten.
+      try { favPresetActiveName = nextFavActivePreset; } catch {}
     }
     if (Array.isArray(state?.favGroupTitles)) {
       localStorage.setItem(LS_FAV_GROUP_TITLES, JSON.stringify(state.favGroupTitles));
@@ -798,11 +982,15 @@ function __applyAccountStateToLocal(state){
     try { window.__refreshFavCount?.(); } catch(e) {}
     try { window.__refreshFavButtonDecor?.(); } catch(e) {}
     try { window.__refreshNoteIndicators?.(); } catch(e) {}
+    try { window.__refreshAccountScores?.(); } catch(e) {}
+    try { window.__refreshAccountSyncUi?.(); } catch(e) {}
 
-    // Wenn wir gerade in Favorites sind: Seite neu rendern
+    // ✅ Nach Account-Load sichtbare UI sofort an den geladenen Favoritenstand anpassen
     try{
       if (typeof __inFavoritesPage !== "undefined" && __inFavoritesPage) {
         renderFavoritesPage();
+      } else {
+        renderCurrent(currentRef);
       }
     }catch{}
 
@@ -817,25 +1005,40 @@ function __applyAccountStateToLocal(state){
 }
 // Pull vom Server -> localStorage setzen
 async function __accountPull(){
-  if (!__isLoggedIn()) return false;
+  if (!__isLoggedIn()) {
+    try { window.__refreshAccountSyncUi?.(); } catch {}
+    return false;
+  }
+
+  try { __setAccountSyncUiState("syncing", { mode:"account" }); } catch {}
 
   try{
     const res = await fetch(`${ACCOUNT_API_BASE}/api/state`, {
       method: "GET",
       headers: __authHeaders(),
     });
-    if (!res.ok) return false;
+    if (!res.ok) {
+      try { __setAccountSyncUiState("error", { mode:"account" }); } catch {}
+      return false;
+    }
+
     const j = await res.json();
-    if (!j || !j.ok) return false;
+    if (!j || !j.ok) {
+      try { __setAccountSyncUiState("error", { mode:"account" }); } catch {}
+      return false;
+    }
 
     __applyAccountStateToLocal(j.state || {});
+    try { __markAccountSynced("account"); } catch {}
+    try { window.__refreshAccountScores?.(); } catch {}
     return true;
   }catch{
+    try { __setAccountSyncUiState("error", { mode:"account" }); } catch {}
     return false;
   }
 }
 
-async function __accountPush(){
+async function __accountPush(mode = "live"){
   if (!__isLoggedIn()) return false;
 
   const payload = __collectLocalAccountState();
@@ -846,24 +1049,48 @@ async function __accountPush(){
       headers: __authHeaders(),
       body: JSON.stringify({ state: payload }),
     });
-    if (!res.ok) return false;
+    if (!res.ok) {
+      try { __setAccountSyncUiState("error", { mode }); } catch {}
+      return false;
+    }
+
     const j = await res.json().catch(() => ({}));
-    return !!(j && j.ok);
+    const ok = !!(j && j.ok);
+
+    if (ok) {
+      try { __markAccountSynced(mode); } catch {}
+    } else {
+      try { __setAccountSyncUiState("error", { mode }); } catch {}
+    }
+
+    return ok;
   }catch{
+    try { __setAccountSyncUiState("error", { mode }); } catch {}
     return false;
   }
 }
 
 // Debounced: nach Änderungen (Bookmark/Note/Style) einmal speichern
 function __accountScheduleSync(){
-  if (!__isLoggedIn()) return;
+  if (!__isLoggedIn()) {
+    try { window.__refreshAccountSyncUi?.(); } catch {}
+    return;
+  }
+
+  try { __setAccountSyncUiState("pending", { mode:"live" }); } catch {}
 
   if (__syncTimer) clearTimeout(__syncTimer);
   __syncTimer = setTimeout(async () => {
     __syncTimer = 0;
     if (__syncInFlight) return;
     __syncInFlight = true;
-    try { await __accountPush(); } finally { __syncInFlight = false; }
+
+    try {
+      __setAccountSyncUiState("syncing", { mode:"live" });
+      await __accountPush("live");
+    } finally {
+      __syncInFlight = false;
+    }
   }, 350);
 }
 
@@ -922,7 +1149,13 @@ window.__accountFlushAll = __accountFlushAll;
 // Beim Laden: wenn Token existiert -> Serverstate holen
 domReady().then(() => {
   if (__isLoggedIn()){
-    __accountPull().catch(()=>{});
+    try { __setAccountSyncUiState("syncing", { mode:"account" }); } catch {}
+    __accountPull().catch(() => {
+      try { __setAccountSyncUiState("error", { mode:"account" }); } catch {}
+    });
+  } else {
+    try { window.__refreshAccountScores?.(); } catch {}
+    try { window.__refreshAccountSyncUi?.(); } catch {}
   }
 });
 
@@ -951,6 +1184,9 @@ function saveBookmarks(list) {
 
     // ✅ account sync (nur wenn eingeloggt)
     try { window.__accountScheduleSync?.(); } catch(e) {}
+
+    // ✅ Statusbar-Surah-Ticks sofort mit den aktiven Favoriten neu färben
+    try { window.__refreshSuraTickMarks?.(); } catch(e) {}
 
     return uniq;
   } catch {
@@ -1163,6 +1399,9 @@ window.__refreshNoteIndicators = function(){
       const has = (typeof v === "string") && !!v.trim();
       noBtn.classList.toggle("is-note", has);
     });
+
+    // Statusbar-Surah-Ticks
+    try { window.__refreshSuraTickMarks?.(); } catch(e) {}
   }catch(e){}
 };
 
@@ -1815,6 +2054,11 @@ function setActivePresetName(name){
 
 // ✅ Liefert IMMER nur die aktuell aktive Liste (actual ODER preset-page ODER notes-only)
 function getActiveFavRefs(){
+  // ✅ Außerhalb der Favorites-Seite arbeitet der Reader/Mushaf immer mit echten Bookmarks
+  if (!(typeof __inFavoritesPage !== "undefined" && __inFavoritesPage)) {
+    return _sortRefs(loadBookmarks());
+  }
+
   if (!favPresetActiveName || favPresetActiveName === "actual") {
     return _sortRefs(loadBookmarks());
   }
@@ -1837,11 +2081,16 @@ function toggleFavInActivePage(ref){
   const r = String(ref || "");
   if (!/^\d+:\d+$/.test(r)) return { ok:false, bookmarked:false, list:[] };
 
-  // actual + notes-only = echte bookmarks
-if (!favPresetActiveName || favPresetActiveName === "actual" || favPresetActiveName === FAV_NOTES_ONLY_KEY || isHabashiKey(favPresetActiveName)) {
-  const res = toggleBookmark(r);
-  return res;
-}
+  // ✅ Außerhalb der Favorites-Seite immer echte Bookmarks togglen
+  if (!(typeof __inFavoritesPage !== "undefined" && __inFavoritesPage)) {
+    return toggleBookmark(r);
+  }
+
+  // actual + notes-only + Habashi = echte bookmarks
+  if (!favPresetActiveName || favPresetActiveName === "actual" || favPresetActiveName === FAV_NOTES_ONLY_KEY || isHabashiKey(favPresetActiveName)) {
+    const res = toggleBookmark(r);
+    return res;
+  }
 
   // preset-page = nur preset ändern
   const pObj = loadFavPresets();
@@ -1857,18 +2106,18 @@ if (!favPresetActiveName || favPresetActiveName === "actual" || favPresetActiveN
     bookmarked = true;
   }
 
-pObj[favPresetActiveName] = _sortRefs(cur);
-saveFavPresets(pObj);
+  pObj[favPresetActiveName] = _sortRefs(cur);
+  saveFavPresets(pObj);
 
-// ✅ Delta: nur EIN Ayah-Change senden
-try{
-  window.__accountFavEvent?.({
-    t: "presetToggle",
-    preset: String(favPresetActiveName || ""),
-    ref: r,
-    on: !!bookmarked
-  });
-}catch{}
+  // ✅ Delta: nur EIN Ayah-Change senden
+  try{
+    window.__accountFavEvent?.({
+      t: "presetToggle",
+      preset: String(favPresetActiveName || ""),
+      ref: r,
+      on: !!bookmarked
+    });
+  }catch{}
 
   // ✅ Count im Statusbar-Favorites-Button updaten (Preset-Page hat sich geändert)
   try { window.__refreshFavCount?.(); } catch(e) {}
@@ -4432,27 +4681,8 @@ window.__refreshFavCount = function(){
     const el = document.getElementById("favCount");
     if (!el) return;
 
-    // ✅ aktiv: current preset name (falls aus irgendeinem Grund noch leer -> actual)
-    const active =
-      (typeof favPresetActiveName !== "undefined" && favPresetActiveName)
-        ? String(favPresetActiveName)
-        : "actual";
-
-    if (active === "actual") {
-      el.textContent = String((loadBookmarks()?.length || 0));
-      return;
-    }
-
-    // ✅ notes-only count
-    if (active === FAV_NOTES_ONLY_KEY) {
-      el.textContent = String((getNotesOnlyRefs()?.length || 0));
-      return;
-    }
-
-    // ✅ preset-page count
-    const pObj = loadFavPresets();
-    const arr = Array.isArray(pObj?.[active]) ? pObj[active] : [];
-    el.textContent = String(arr.length || 0);
+    const arr = getActiveFavRefs();
+    el.textContent = String((arr?.length || 0));
   } catch(e) {}
 };
 
@@ -4738,6 +4968,14 @@ if (favClearBtn && !favClearBtn._bound) {
     document.body.appendChild(mNoTip);
   }
 
+  let hifzHelpTip = document.getElementById("hifzHelpTip");
+  if (!hifzHelpTip) {
+    hifzHelpTip = document.createElement("div");
+    hifzHelpTip.id = "hifzHelpTip";
+    hifzHelpTip.className = "suraProgTip";
+    document.body.appendChild(hifzHelpTip);
+  }
+
   const escTip = (s) =>
     String(s ?? "").replace(/[&<>"']/g, (c) => ({
       "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;"
@@ -4873,6 +5111,33 @@ function _hideTip(tipEl){
   // =========================
   let _ticksSurah = 0;
 
+  function getSuraTickState(ref, favSet, notesMap){
+    const r = String(ref || "");
+    const hasFav = !!favSet?.has?.(r);
+    const noteVal = notesMap?.[r];
+    const hasNote = (typeof noteVal === "string") && !!noteVal.trim();
+    return { hasFav, hasNote };
+  }
+
+  function refreshSuraTickMarks(surahNo = _ticksSurah){
+    if (!suraProgTicks) return;
+
+    const s = Number(surahNo || _ticksSurah || 0);
+    if (!Number.isFinite(s) || s < 1) return;
+
+    const favSet = new Set((getActiveFavRefs?.() || []).map(String));
+    const notesMap = loadNotesMap();
+
+    suraProgTicks.querySelectorAll(".suraTick[data-ref]").forEach((btn) => {
+      const ref = String(btn.dataset?.ref || "");
+      if (!ref) return;
+
+      const { hasFav, hasNote } = getSuraTickState(ref, favSet, notesMap);
+      btn.classList.toggle("is-fav", hasFav);
+      btn.classList.toggle("is-note", hasNote);
+    });
+  }
+
   function buildSuraTicks(surahNo){
     if (!suraProgTicks) return;
 
@@ -4885,20 +5150,29 @@ function _hideTip(tipEl){
     }
 
     // nicht neu bauen, wenn gleiche Sura
-    if (_ticksSurah === s && suraProgTicks.childElementCount === meta.ayahCount) return;
+    if (_ticksSurah === s && suraProgTicks.childElementCount === meta.ayahCount) {
+      refreshSuraTickMarks(s);
+      return;
+    }
 
     _ticksSurah = s;
     const n = Number(meta.ayahCount);
+
+    const favSet = new Set((getActiveFavRefs?.() || []).map(String));
+    const notesMap = loadNotesMap();
 
     let html = "";
     for (let i = 1; i <= n; i++){
       const pct = (n <= 0) ? 0 : (i / n) * 100;
       const ref = `${s}:${i}`;
-      html += `<button class="suraTick" type="button" style="left:${pct.toFixed(4)}%" data-ref="${ref}" aria-label="${ref}"></button>`;
+      const { hasFav, hasNote } = getSuraTickState(ref, favSet, notesMap);
+      const cls = `suraTick${hasFav ? " is-fav" : ""}${hasNote ? " is-note" : ""}`;
+      html += `<button class="${cls}" type="button" style="left:${pct.toFixed(4)}%" data-ref="${ref}" aria-label="${ref}"></button>`;
     }
     suraProgTicks.innerHTML = html;
   }
 
+  window.__refreshSuraTickMarks = (surahNo) => { try { refreshSuraTickMarks(surahNo); } catch {} };
   window.__suraProgSetSurah = (s) => { try { buildSuraTicks(s); } catch {} };
   try { buildSuraTicks(currentSurahInView || 1); } catch {}
 
@@ -5284,6 +5558,70 @@ mNoTip.innerHTML = `
     _placeTip(mNoTip, e.clientX, e.clientY);
   }, { passive: true });
 
+  let _lastHifzHelpKey = "";
+  document.addEventListener("mousemove", (e) => {
+    if (!tooltipsAllowed()) {
+      _lastHifzHelpKey = "";
+      _hideTip(hifzHelpTip);
+      return;
+    }
+
+    if (e.target?.closest?.("#suraProgTip, #wordTip, #mNoTip, #hifzHelpTip")) return;
+
+    const helpEl = e.target?.closest?.("[data-hifz-help]");
+    if (!helpEl) {
+      _lastHifzHelpKey = "";
+      _hideTip(hifzHelpTip);
+      return;
+    }
+
+    const title = String(helpEl.dataset?.hifzHelpTitle || "Help");
+    const text = String(helpEl.dataset?.hifzHelpText || "");
+    const key = `${helpEl.dataset?.hifzHelp || ""}|${title}|${text}`;
+
+    if (_lastHifzHelpKey !== key) {
+      _lastHifzHelpKey = key;
+
+      const lower = text.toLowerCase();
+      const markers = ["quranl.com", "quranf.com"];
+      const marker = markers.find((m) => lower.includes(m)) || "";
+      let textHtml = "";
+
+      if (marker) {
+        const idx = lower.indexOf(marker);
+        const before = text.slice(0, idx).trim();
+        const after = text.slice(idx + marker.length).trim();
+
+        textHtml = `
+          ${before ? `<div class="tipTr">${escTip(before)}</div>` : ``}
+          <div class="tipLinkAccent">${escTip(marker)}</div>
+          ${after ? `<div class="tipTr">${escTip(after)}</div>` : ``}
+        `;
+      } else {
+        textHtml = text ? `<div class="tipTr">${escTip(text)}</div>` : ``;
+      }
+
+      hifzHelpTip.innerHTML = `
+        <div class="tipRef">${escTip(title)}</div>
+        ${textHtml}
+      `;
+    }
+
+    _placeTip(hifzHelpTip, e.clientX, e.clientY);
+  }, { passive: true });
+
+  document.addEventListener("mouseout", (e) => {
+    const helpEl = e.target?.closest?.("[data-hifz-help]");
+    if (!helpEl) return;
+
+    const rel = e.relatedTarget;
+    const stillInsideHelp = rel?.closest?.("[data-hifz-help]");
+    if (stillInsideHelp) return;
+
+    _lastHifzHelpKey = "";
+    _hideTip(hifzHelpTip);
+  }, { passive: true });
+
   function refreshFavCount() {
     // ✅ Wichtig: nach Reload soll der Count zur aktiven Favorites-Seite passen (actual ODER preset)
     try {
@@ -5591,6 +5929,7 @@ function bindFavProgressListeners() {
 // ✅ Expose für Updates (nach Bookmark toggle, nach render, etc.)
 window.__refreshFavButtonDecor = function(){
   try { scheduleFavProgressUpdate(); } catch(e) {}
+  try { window.__refreshSuraTickMarks?.(); } catch(e) {}
 };
 
 // ✅ Expose, damit renderCurrent nach jedem Render nachbinden kann
@@ -10405,6 +10744,27 @@ function initAccountPanel(){
     if (e.key === "Escape") close();
   });
 
+    async function maybeStoreBrowserPasswordCredential(username, password){
+    const user = String(username || "").trim();
+    const pass = String(password || "");
+
+    if (!user || !pass) return false;
+    if (!window.PasswordCredential || !navigator.credentials?.store) return false;
+
+    try{
+      const cred = new PasswordCredential({
+        id: user,
+        password: pass,
+        name: user
+      });
+
+      await navigator.credentials.store(cred);
+      return true;
+    }catch{
+      return false;
+    }
+  }
+
   async function doLoginOrCreate(mode){
     const username = (elUser?.value || "").trim();
     const password = (elPass?.value || "");
@@ -10416,32 +10776,36 @@ function initAccountPanel(){
 
     try{
       if (mode === "create"){
-        await _api("/api/register", {
-          method: "POST",
-          body: JSON.stringify({ username, password })
-        });
+        await api("/api/register", { method:"POST", body:{ username, password }, auth:false });
       }
 
-      const res = await _api("/api/login", {
-        method: "POST",
-        body: JSON.stringify({ username, password })
-      });
+      const login = await api("/api/login", { method:"POST", body:{ username, password }, auth:false });
 
-      _setAuth(res.token || "", username);
+      // Token + 114d timestamp (deine bestehenden Helfer)
+      try { __setAuthToken?.(login.token || ""); } catch {}
+      try { localStorage.setItem(LS_ACC_USER, username); } catch {}
+      try { await maybeStoreBrowserPasswordCredential(username, password); } catch {}
 
-      await syncAccountState();
+      // Cloud -> Local ziehen
+      try { await __accountPull?.(); } catch {}
 
-      refreshAccountUI();
+      // UI refresh hooks
+      try { window.__refreshFavCount?.(); } catch {}
+      try { window.__refreshFavButtonDecor?.(); } catch {}
+      try { window.__refreshNoteIndicators?.(); } catch {}
+      try { window.__refreshAccountScores?.(); } catch {}
+      try { window.__refreshAccountSyncUi?.(); } catch {}
+      try {
+        const sid = localStorage.getItem("quranm_style_theme_v1") || "";
+        if (sid) window.quranStyleSet?.(sid);
+      } catch {}
 
-      try { if (elUser) elUser.value = ""; } catch {}
-      try { if (elPass) elPass.value = ""; } catch {}
+      // Felder leeren
+      try { elUser.value = ""; } catch {}
+      try { elPass.value = ""; } catch {}
 
-      setMsg(
-        mode === "create"
-          ? "Success. Your settings are now linked to your account."
-          : "Logged in. Loading your saved settings...",
-        false
-      );
+      refreshButtons();
+      setMsg(mode === "create" ? "Account created + logged in." : "Logged in.", false);
     }catch(e){
       setMsg(String(e?.message || e), true);
     }
@@ -10452,7 +10816,7 @@ function initAccountPanel(){
     const u = _getAuthUser();
     if (u){
       _clearAuth();
-      refreshAccountUI();
+      refreshButtons();
       setMsg("Logged out.", false);
       return;
     }
@@ -10498,7 +10862,7 @@ async function doLoginOrCreate(mode) {
     });
 
     _setAuth(res.token || "", username);
-    refreshWelcomeAuthUI();
+    refreshButtons();
 
     // sync localStorage -> account (and pull account -> local)
     await syncAccountState();
@@ -10528,7 +10892,7 @@ async function doLoginOrCreate(mode) {
     e.preventDefault();
     e.stopPropagation();
     _clearAuth();
-    refreshWelcomeAuthUI();
+    refreshButtons();
     setMsg("Logged out.", false);
   });
 
@@ -10540,7 +10904,7 @@ async function doLoginOrCreate(mode) {
   });
 
   // init state
-  refreshWelcomeAuthUI();
+  refreshButtons();
 }
 
 function _navIsReload() {
@@ -10621,6 +10985,9 @@ function bindAccountMenuActions(){
   const btnCreate = document.getElementById("acctCreateBtn");
   const btnExport = document.getElementById("acctExportBtn");
   const fileImport = document.getElementById("acctImportFile");
+  const btnLoadAccount = document.getElementById("acctLoadAccountBtn");
+  const btnSaveDevice = document.getElementById("acctSaveDeviceBtn");
+  const syncHint = document.getElementById("acctSyncHint");
 
   // ✅ Bug report UI
   const btnBug = document.getElementById("acctBugBtn");
@@ -10632,7 +10999,7 @@ function bindAccountMenuActions(){
 
   const msg = document.getElementById("acctMsg");
 
-  if (!picker || !btnLogin || !btnCreate || !btnExport || !fileImport || !msg) return;
+  if (!picker || !btnLogin || !btnCreate || !btnExport || !fileImport || !btnLoadAccount || !btnSaveDevice || !msg) return;
   if (picker.__acctActionsBound) return;
   picker.__acctActionsBound = true;
 
@@ -10650,8 +11017,16 @@ function bindAccountMenuActions(){
 
   function refreshButtons(){
     const inOk = isLoggedIn();
+
     btnLogin.textContent = inOk ? "Log out" : "Log in";
     btnCreate.style.display = inOk ? "none" : "inline-flex";
+    btnLoadAccount.style.display = inOk ? "inline-flex" : "none";
+    btnSaveDevice.style.display = inOk ? "inline-flex" : "none";
+    if (syncHint) syncHint.hidden = !inOk;
+
+    try { window.__refreshAccountScores?.(); } catch {}
+    try { window.__refreshAccountSyncUi?.(); } catch {}
+
     if (inOk) setMsg("Logged in", false);
     else setMsg("", false);
   }
@@ -10676,6 +11051,48 @@ function bindAccountMenuActions(){
     return j;
   }
 
+  async function maybeStoreBrowserPasswordCredential(username, password){
+    const user = String(username || "").trim();
+    const pass = String(password || "");
+
+    if (!user || !pass) return false;
+    if (!window.PasswordCredential || !navigator.credentials?.store) return false;
+
+    try{
+      const cred = new PasswordCredential({
+        id: user,
+        password: pass,
+        name: user
+      });
+
+      await navigator.credentials.store(cred);
+      return true;
+    }catch{
+      return false;
+    }
+  }
+
+  async function maybeStoreBrowserPasswordCredential(username, password){
+    const user = String(username || "").trim();
+    const pass = String(password || "");
+
+    if (!user || !pass) return false;
+    if (!window.PasswordCredential || !navigator.credentials?.store) return false;
+
+    try{
+      const cred = new PasswordCredential({
+        id: user,
+        password: pass,
+        name: user
+      });
+
+      await navigator.credentials.store(cred);
+      return true;
+    }catch{
+      return false;
+    }
+  }
+
   async function doLoginOrCreate(mode){
     const username = (elUser?.value || "").trim();
     const password = (elPass?.value || "");
@@ -10692,33 +11109,64 @@ function bindAccountMenuActions(){
 
       const login = await api("/api/login", { method:"POST", body:{ username, password }, auth:false });
 
-      // Token + 114d timestamp (deine bestehenden Helfer)
       try { __setAuthToken?.(login.token || ""); } catch {}
       try { localStorage.setItem(LS_ACC_USER, username); } catch {}
+      try { await maybeStoreBrowserPasswordCredential(username, password); } catch {}
 
-      // Cloud -> Local ziehen
-      try { await __accountPull?.(); } catch {}
-
-      // UI refresh hooks
-      try { window.__refreshFavCount?.(); } catch {}
-      try { window.__refreshFavButtonDecor?.(); } catch {}
-      try { window.__refreshNoteIndicators?.(); } catch {}
+      let remoteState = {};
       try {
-        const sid = localStorage.getItem("quranm_style_theme_v1") || "";
-        if (sid) window.quranStyleSet?.(sid);
-      } catch {}
+        const remote = await api("/api/state", { method:"GET", auth:true });
+        remoteState = (remote && remote.state && typeof remote.state === "object") ? remote.state : {};
+      } catch {
+        remoteState = {};
+      }
 
-      // Felder leeren
+      const localState = (typeof __collectLocalAccountState === "function")
+        ? __collectLocalAccountState()
+        : {};
+
+      const hasRemoteState = !!Object.keys(remoteState || {}).length;
+      const hasMismatch = hasRemoteState && (() => {
+        try{
+          return JSON.stringify(localState || {}) !== JSON.stringify(remoteState || {});
+        }catch{
+          return false;
+        }
+      })();
+
+      if (hasMismatch) {
+        refreshButtons();
+        setMsg("Logged in. Browser storage and account storage differ.", false);
+        try {
+          window.alert('Account storage ≠ Browser storage, click "Save device" to upload Browser storage or "Load account" to import Account storage.');
+        } catch {}
+      } else {
+        if (hasRemoteState) {
+          try { __applyAccountStateToLocal(remoteState); } catch {}
+          try { __setAccountLastSyncNow?.(); } catch {}
+        } else {
+          try { await __accountPush?.(); } catch {}
+        }
+
+        try { window.__refreshFavCount?.(); } catch {}
+        try { window.__refreshFavButtonDecor?.(); } catch {}
+        try { window.__refreshNoteIndicators?.(); } catch {}
+        try { window.__refreshAccountScores?.(); } catch {}
+        try { window.__refreshAccountSyncUi?.(); } catch {}
+        try {
+          const sid = localStorage.getItem("quranm_style_theme_v1") || "";
+          if (sid) window.quranStyleSet?.(sid);
+        } catch {}
+        refreshButtons();
+        setMsg(mode === "create" ? "Account created + logged in." : "Logged in.", false);
+      }
+
       try { elUser.value = ""; } catch {}
       try { elPass.value = ""; } catch {}
-
-      refreshButtons();
-      setMsg(mode === "create" ? "Account created + logged in." : "Logged in.", false);
     }catch(e){
       setMsg(String(e?.message || e), true);
     }
   }
-
   // Log in / Log out
 btnLogin.addEventListener("click", async () => {
   if (isLoggedIn()){
@@ -10736,6 +11184,46 @@ btnLogin.addEventListener("click", async () => {
 });
 
   btnCreate.addEventListener("click", () => doLoginOrCreate("create"));
+
+  btnLoadAccount?.addEventListener("click", async () => {
+    if (!isLoggedIn()) {
+      setMsg("Please log in first.", true);
+      return;
+    }
+
+    setMsg("Loading account...", false);
+    try {
+      const ok = await __accountPull?.();
+      if (ok) {
+        refreshButtons();
+        setMsg("Loaded account.", false);
+      } else {
+        setMsg("Could not load account.", true);
+      }
+    } catch (e) {
+      setMsg("Load failed: " + String(e?.message || e), true);
+    }
+  });
+
+  btnSaveDevice?.addEventListener("click", async () => {
+    if (!isLoggedIn()) {
+      setMsg("Please log in first.", true);
+      return;
+    }
+
+    setMsg("Saving device...", false);
+    try {
+      const ok = await __accountPush?.("live");
+      if (ok) {
+        refreshButtons();
+        setMsg("Saved device to account.", false);
+      } else {
+        setMsg("Could not save device.", true);
+      }
+    } catch (e) {
+      setMsg("Save failed: " + String(e?.message || e), true);
+    }
+  });
 
   // Export settings JSON (inkl. Favorites Pages + Gruppen)
   btnExport.addEventListener("click", () => {

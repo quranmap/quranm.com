@@ -666,17 +666,39 @@ html.rotate-phone body{
   background: rgba(255,255,255,0.55);
 }
 
-/* Active stärker */
-.suraTick.is-active::after{
-  background: var(--c-a-85);
-}
-
 /* ✅ Lightmode: Strichfarbe bleibt sichtbar */
 html[data-theme="light"] .suraTick::after{
   background: rgba(var(--rgb-ink),0.22);
 }
 html[data-theme="light"] .suraTick:hover::after{
   background: rgba(var(--rgb-ink),0.45);
+}
+
+/* ✅ Favoriten-Markierung wie um die Ayahnummer im Mushaf-Mode */
+.suraTick.is-fav:not(.is-active)::after{
+  background: rgba(var(--rgb-fav),0.88);
+}
+
+/* ✅ Notes-Markierung wie um die Ayahnummer im Mushaf-Mode
+   - Fav hat Vorrang
+   - aktive Ayah hat weiter Accent-Vorrang */
+.suraTick.is-note:not(.is-fav):not(.is-active)::after{
+  background: var(--c-note-70);
+}
+
+html[data-theme="light"] .suraTick.is-fav:not(.is-active)::after{
+  background: rgba(var(--rgb-fav),0.88);
+}
+html[data-theme="light"] .suraTick.is-note:not(.is-fav):not(.is-active)::after{
+  background: var(--c-note-70);
+}
+
+/* Active stärker */
+.suraTick.is-active::after{
+  background: var(--c-a-85);
+}
+html[data-theme="light"] .suraTick.is-active::after{
+  background: var(--c-a-85);
 }
 
 /* ✅ Hover-Background: NICHT schwarz im Lightmode */
@@ -1129,6 +1151,17 @@ html[data-theme="light"] .suraProgTip{
   font-family: var(--font-de);
   font-size: calc(var(--ayah-font-meta) * 0.96);
   opacity: .90;
+}
+
+.suraProgTip .tipLinkAccent{
+  display: block;
+  font-family: var(--font-meta);
+  font-size: calc(var(--ayah-font-meta) * 1.44);
+  font-weight: 800;
+  line-height: 1.08;
+  color: var(--c-a-95);
+  text-align: center;
+  margin: calc(var(--stage-h) * 0.004) 0;
 }
 
 /* ✅ HARD hide: SurahPause/Repeat nur wenn SurahPlay läuft */
@@ -6407,6 +6440,221 @@ html[data-theme="light"] .acctBtn{
   opacity: 0.95;
 }
 
+.acctTopInfo{
+  display:grid;
+  gap: calc(var(--stage-h) * 0.010);
+  margin-bottom: calc(var(--stage-h) * 0.012);
+}
+
+.acctMetaRow{
+  display:flex;
+  align-items:center;
+  justify-content:flex-start;
+}
+
+.acctMetaRowWrap{
+  flex-wrap:wrap;
+}
+
+.acctMetaRowSync{
+  margin-top: calc(var(--stage-h) * 0.002);
+}
+
+.acctMetaChip{
+  width: min(calc(var(--stage-w) * 0.34), 100%);
+  min-height: calc(var(--stage-h) * 0.052);
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap: calc(var(--stage-w) * 0.010);
+  padding:
+    calc(var(--stage-h) * 0.0075)
+    calc(var(--stage-w) * 0.0125);
+  border: var(--u1h) solid var(--color-line);
+  border-radius: calc(var(--stage-h) * 0.013);
+  background:
+    linear-gradient(
+      180deg,
+      rgba(var(--rgb-white),0.060) 0%,
+      rgba(var(--rgb-white),0.020) 100%
+    ),
+    rgba(var(--rgb-ink),0.26);
+  box-shadow:
+    inset 0 0 0 var(--u1h) rgba(var(--rgb-white),0.04),
+    0 0 0 calc(var(--glow-ring) * 0.95) rgba(var(--rgb-white),0.04);
+}
+
+.acctMetaChipReader{
+  border-color: var(--c-a-35);
+  box-shadow:
+    inset 0 0 0 var(--u1h) rgba(var(--rgb-white),0.04),
+    0 0 0 calc(var(--glow-ring) * 1.00) var(--c-a-22),
+    0 0 calc(var(--glow-soft) * 0.42) rgba(var(--rgb-accent),0.18);
+}
+
+.acctMetaChipHifz{
+  border-color: rgba(var(--rgb-ok),0.34);
+  box-shadow:
+    inset 0 0 0 var(--u1h) rgba(var(--rgb-white),0.04),
+    0 0 0 calc(var(--glow-ring) * 1.00) rgba(var(--rgb-ok),0.14),
+    0 0 calc(var(--glow-soft) * 0.42) rgba(var(--rgb-ok),0.12);
+}
+
+.acctMetaLabel{
+  font-family: var(--font-meta);
+  font-size: calc(var(--ayah-font-meta) * 0.86);
+  font-weight: 760;
+  line-height: 1;
+  color: var(--color-text);
+  opacity: 0.96;
+}
+
+.acctMetaValue{
+  margin-left: auto;
+  font-family: var(--font-meta);
+  font-size: calc(var(--ayah-font-meta) * 1.06);
+  font-weight: 800;
+  line-height: 1;
+  color: rgb(var(--rgb-ok));
+  text-shadow:
+    0 0 calc(var(--u6h) * 0.35) rgba(var(--rgb-black),0.42);
+}
+
+.hifzHelpInfo{
+  width: calc(var(--stage-h) * 0.022);
+  height: calc(var(--stage-h) * 0.022);
+  border-radius: var(--round-pill);
+  display:inline-grid;
+  place-items:center;
+  flex: 0 0 auto;
+  border: var(--u1h) solid rgba(var(--rgb-white),0.18);
+  background: rgba(var(--rgb-white),0.07);
+  color: var(--color-text);
+  font-family: var(--font-meta);
+  font-size: calc(var(--ayah-font-meta) * 0.82);
+  font-weight: 800;
+  line-height: 1;
+  cursor: help;
+  user-select: none;
+  transition:
+    border-color 140ms ease,
+    box-shadow 140ms ease,
+    transform 120ms ease,
+    background 140ms ease;
+}
+
+.hifzHelpInfo:hover{
+  border-color: var(--c-a-35);
+  box-shadow:
+    0 0 0 var(--u1h) var(--c-a-22),
+    0 0 calc(var(--glow-soft) * 0.55) var(--c-a-25);
+  transform: translateY(calc(var(--u1h) * -0.5));
+}
+
+.acctSyncCard{
+  width: min(calc(var(--stage-w) * 0.34), 100%);
+  display:grid;
+  gap: calc(var(--stage-h) * 0.0075);
+  padding:
+    calc(var(--stage-h) * 0.010)
+    calc(var(--stage-w) * 0.0125);
+  border: var(--u1h) solid var(--color-line);
+  border-radius: calc(var(--stage-h) * 0.013);
+  background:
+    linear-gradient(
+      180deg,
+      rgba(var(--rgb-white),0.040) 0%,
+      rgba(var(--rgb-white),0.014) 100%
+    ),
+    rgba(var(--rgb-ink),0.24);
+  box-shadow:
+    inset 0 0 0 var(--u1h) rgba(var(--rgb-white),0.03),
+    0 0 0 calc(var(--glow-ring) * 0.90) rgba(var(--rgb-white),0.035);
+}
+
+
+.acctSyncLine{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap: calc(var(--stage-w) * 0.012);
+}
+
+.acctSyncLabel,
+.acctSyncValue{
+  font-family: var(--font-meta);
+  font-size: calc(var(--ayah-font-meta) * 0.82);
+  font-weight: 700;
+  line-height: 1;
+  color: var(--color-text);
+}
+
+.acctSyncValue{
+  text-align:right;
+}
+
+.acctSyncValueMuted{
+  color: var(--color-text-muted);
+  font-weight: 650;
+}
+
+.acctSyncTools{
+  width: min(calc(var(--stage-w) * 0.34), 100%);
+  margin-top: calc(var(--stage-h) * 0.002);
+  justify-content:space-between;
+}
+
+.acctSyncTools .acctBtnSmall{
+  flex: 1 1 0;
+}
+
+.acctSyncHint{
+  width: min(calc(var(--stage-w) * 0.34), 100%);
+  font-family: var(--font-meta);
+  font-size: calc(var(--ayah-font-meta) * 0.74);
+  line-height: 1.25;
+  color: var(--color-text-muted);
+  opacity: 0.92;
+}
+
+html[data-theme="light"] .acctMetaChip{
+  background:
+    linear-gradient(
+      180deg,
+      rgba(var(--rgb-white),0.94) 0%,
+      rgba(var(--rgb-white),0.72) 100%
+    ),
+    rgba(var(--rgb-ink),0.04);
+}
+
+html[data-theme="light"] .acctMetaValue{
+  text-shadow: none;
+}
+
+html[data-theme="light"] .hifzHelpInfo{
+  border-color: rgba(var(--rgb-ink),0.16);
+  background: rgba(var(--rgb-ink),0.04);
+  color: rgba(var(--rgb-ink),0.90);
+}
+
+html[data-theme="light"] .acctSyncCard{
+  background:
+    linear-gradient(
+      180deg,
+      rgba(var(--rgb-white),0.94) 0%,
+      rgba(var(--rgb-white),0.72) 100%
+    ),
+    rgba(var(--rgb-ink),0.04);
+}
+
+@media (max-aspect-ratio: 9/13){
+  .acctMetaChip,
+  .acctSyncCard,
+  .acctSyncHint{
+    width: 100%;
+  }
+}
+
 .acctClose{
   border: var(--u1h) solid var(--color-line);
   background: var(--color-bg-stage) !important;
@@ -6553,6 +6801,18 @@ html[data-theme="light"] .acctBtnSmall{ background: var(--c-ink-04); }
 
 .acctMsg.is-ok{ color: rgba(var(--rgb-ok),0.95); }
 .acctMsg.is-error{ color: var(--c-d-95); }
+
+.acctSyncTools{
+  display:flex;
+  gap: calc(var(--stage-w) * 0.010);
+  align-items:center;
+  flex-wrap:wrap;
+}
+
+#acctSyncTools[hidden],
+#acctSyncHint[hidden]{
+  display:none !important;
+}
 
 .acctImportLabel{
   display:inline-flex;
