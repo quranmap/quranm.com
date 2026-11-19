@@ -1,0 +1,214 @@
+/* =====================================================================
+   HOCHFORMAT (html.portrait) – Handy/iPad hochkant, schmale Fenster
+   app.js setzt html.portrait, --stage-w = Bildschirmbreite und eine
+   lesbare virtuelle --stage-h. Statusleiste = 2 Reihen statt 1 Zeile.
+   Wird NACH app.css geladen.
+   ===================================================================== */
+html.portrait{
+  --pt-gap: 6px;
+  --pt-pad: 8px;
+  --pt-btn: 38px;                 /* Touch-Ziel */
+  --pt-row1: var(--pt-btn);
+  --pt-row2: 34px;
+  --pt-safe-top: env(safe-area-inset-top, 0px);
+  --pt-safe-bottom: env(safe-area-inset-bottom, 0px);
+  --pt-sb-h: calc(var(--pt-pad) + var(--pt-row1) + var(--pt-gap) + var(--pt-row2) + var(--pt-pad) + 4px);
+
+  /* Karten/Text: echte Bildschirmbreite statt virtueller Bühne */
+  --ayah-card-w: var(--vw);
+  --ayah-inner-w: calc(var(--vw) - 16px);
+}
+
+html.portrait .ayahTransList,
+html.portrait .ayahTrans{
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+/* Sicherheitsnetz: nichts ragt seitlich raus */
+html.portrait body,
+html.portrait #viewportRoot,
+html.portrait #frame,
+html.portrait .stage{
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+html.portrait #frame{
+  grid-template-columns: 0 var(--vw) 0;
+}
+
+html.portrait .statusbar{
+  position: absolute;
+  left: 0;
+  top: 0;
+  transform: none;
+  width: var(--vw);
+  height: calc(var(--pt-sb-h) + var(--pt-safe-top));
+  padding: calc(var(--pt-pad) + var(--pt-safe-top)) var(--pt-pad) var(--pt-pad);
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  align-items: center;
+  column-gap: var(--pt-gap);
+  row-gap: var(--pt-gap);
+  border-left: 0;
+  border-right: 0;
+  border-top: 0;
+  border-radius: 0;
+}
+
+/* alle Statusleisten-Elemente in den Fluss holen */
+html.portrait .statusbar > *:not(.suraProg){
+  position: relative !important;
+  left: auto !important;
+  right: auto !important;
+  top: auto !important;
+  bottom: auto !important;
+  transform: none !important;
+  translate: none !important;
+  margin: 0 !important;
+  flex: 0 0 auto;
+}
+
+/* ---- Reihe 1: Sure (breit) · Sprung · Play · Ansicht · Theme ---- */
+html.portrait #suraDrop      { order: 1; flex: 1 1 auto; min-width: 0; height: var(--pt-row1) !important; }
+html.portrait #jumpBox       { order: 2; width: 72px !important; height: var(--pt-row1) !important; }
+html.portrait #playStop      { order: 3; }
+html.portrait #playPause     { order: 4; }
+html.portrait #suraPause,
+html.portrait #favPause      { order: 5; }
+html.portrait #suraRepeat,
+html.portrait #favRepeat     { order: 6; }
+html.portrait #viewToggleBtn { order: 7; }
+html.portrait #themeBtn      { order: 8; }
+
+html.portrait #playStop,
+html.portrait #playPause,
+html.portrait #suraPause,
+html.portrait #favPause,
+html.portrait #suraRepeat,
+html.portrait #favRepeat,
+html.portrait #viewToggleBtn,
+html.portrait #themeBtn{
+  width: var(--pt-btn) !important;
+  height: var(--pt-btn) !important;
+  min-width: var(--pt-btn);
+}
+
+/* Zeilenumbruch nach Reihe 1 */
+html.portrait .statusbar::after{
+  content: "";
+  order: 9;
+  flex-basis: 100%;
+  height: 0;
+}
+
+/* ---- Reihe 2: Favoriten · Rezitator · Übersetzung · Schrift · A± · Konto · Farben ---- */
+html.portrait #favBtnBtn    { order: 10; }
+html.portrait #recDrop      { order: 11; }
+html.portrait #trDrop       { order: 12; }
+html.portrait #fontDrop     { order: 13; }
+html.portrait #fsCtl        { order: 14; }
+html.portrait #acctPicker   { order: 15; }
+html.portrait #stylePicker  { order: 16; }
+html.portrait #surfacePicker{ order: 17; }
+
+html.portrait #favBtnBtn,
+html.portrait #recDrop,
+html.portrait #trDrop,
+html.portrait #fontDrop{
+  flex: 1 1 0 !important;
+  min-width: 0;
+  width: auto !important;
+  height: var(--pt-row2) !important;
+}
+
+html.portrait #fsCtl,
+html.portrait #acctPicker{
+  width: var(--pt-row2) !important;
+  height: var(--pt-row2) !important;
+}
+
+html.portrait #stylePicker,
+html.portrait #surfacePicker{
+  width: 16px !important;
+  height: 16px !important;
+}
+
+/* Lautstärke: am Handy/Tablet über die Gerätetasten */
+html.portrait #volCtl{ display: none !important; }
+
+/* Knopf-Inhalte füllen ihre neue Box */
+html.portrait #suraDropBtn,
+html.portrait #recDropBtn,
+html.portrait #trDropBtn,
+html.portrait #fontDropBtn,
+html.portrait #fsBtn,
+html.portrait #acctBtn{
+  width: 100% !important;
+  height: 100% !important;
+}
+
+/* Aufklapp-Menüs: bildschirmbreit direkt unter der Leiste */
+html.portrait .suraDropMenu,
+html.portrait .recDropMenu,
+html.portrait .trDropMenu,
+html.portrait .fontDropMenu,
+html.portrait #acctMenu,
+html.portrait #styleMenu,
+html.portrait #surfaceMenu{
+  position: fixed !important;
+  left: 8px !important;
+  right: 8px !important;
+  top: calc(var(--pt-sb-h) + var(--pt-safe-top) + 2px) !important;
+  bottom: auto !important;
+  transform: none !important;
+  width: auto !important;
+  max-width: none !important;
+  max-height: min(70vh, calc(var(--vh) - var(--pt-sb-h) - var(--pt-safe-top) - 24px)) !important;
+  overflow-y: auto !important;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Farb-Menüs: Raster aus großen Punkten statt dünner Leiste */
+html.portrait #styleMenu,
+html.portrait #surfaceMenu{
+  height: auto !important;
+  flex-wrap: wrap !important;
+  align-content: flex-start;
+  gap: 10px !important;
+  padding: 12px !important;
+  overflow-x: hidden !important;
+  background: var(--color-bg-main);
+  border: 1px solid var(--color-line);
+  border-radius: 12px;
+  z-index: 9000;
+}
+html.portrait .styleDot,
+html.portrait .surfaceDot{
+  width: 34px !important;
+  height: 34px !important;
+  flex: 0 0 auto;
+}
+html.portrait .stylePicker.is-open,
+html.portrait .surfacePicker.is-open{
+  width: 16px !important;
+  padding: 0 !important;
+}
+
+/* Fortschritt unten an der Leiste */
+html.portrait .suraProg{
+  height: 4px;
+}
+
+/* ---- Leseansicht: volle Breite, volle Höhe ---- */
+html.portrait .qView{
+  left: 0;
+  transform: none;
+  width: var(--vw);
+  top: calc(var(--pt-sb-h) + var(--pt-safe-top) + 4px);
+  height: calc(var(--vh) - var(--pt-sb-h) - var(--pt-safe-top) - 4px);
+  padding-bottom: var(--pt-safe-bottom);
+  overscroll-behavior: contain;
+}

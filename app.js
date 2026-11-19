@@ -143,24 +143,48 @@ function isPhoneDevice() {
   return false;
 }
 
+// ✅ Hochformat (Handy/iPad hochkant, schmale Fenster): kein Drehen mehr,
+//    sondern eigenes Layout. Breiten folgen dem Bildschirm (--stage-w = vw),
+//    Größen/Schrift (--stage-h) bekommen eine lesbare "virtuelle" Höhe.
+const PORTRAIT_MAX_ASPECT = 0.9; // vw/vh darunter = Hochformat-Layout
+
+function portraitStageH(vw) {
+  // 375px Handy -> ~511, 430px -> ~530, iPad 820px -> ~667
+  return Math.min(vw * 1.45, 380 + vw * 0.35);
+}
+
 function recalc() {
   const rotated = document.documentElement.classList.contains("rotate-phone");
 
   const vw = rotated ? window.innerHeight : window.innerWidth;
   const vh = rotated ? window.innerWidth : window.innerHeight;
 
-  // ✅ 16:9 Stage (wie bisher)
-  const stageW = Math.min(vw, vh * (16 / 9));
-  const stageH = stageW * (9 / 16);
+  const portrait = !rotated && vw > 0 && vh > 0 && (vw / vh) < PORTRAIT_MAX_ASPECT;
+  document.documentElement.classList.toggle("portrait", portrait);
 
-  // ✅ links/rechts: maximal möglich
-  const barLR = Math.max(0, (vw - stageW) / 2);
+  let stageW, stageH, barLR, stageVH;
 
-  // ✅ Stage View Height: darf über 16:9 wachsen, aber nur begrenzt
-  // (damit bei hohen Fenstern mehr Inhalt sichtbar wird, ohne Skalierung zu ändern)
-  const extraV = Math.max(0, vh - stageH);
-  const maxExtra = stageH * 0.35;              // feinjustieren: 0.20 .. 0.45
-  const stageVH = stageH + Math.min(extraV, maxExtra);
+  if (portrait) {
+    // Größen-Einheiten wie eine virtuelle 16:9-Bühne (Icons/Abstände bleiben stimmig),
+    // echte Breiten (Leiste, Karten, Menüs) begrenzt portrait.css auf --vw.
+    stageH = portraitStageH(vw);
+    stageW = stageH * (16 / 9);
+    barLR = 0;
+    stageVH = vh;
+  } else {
+    // ✅ 16:9 Stage (wie bisher)
+    stageW = Math.min(vw, vh * (16 / 9));
+    stageH = stageW * (9 / 16);
+
+    // ✅ links/rechts: maximal möglich
+    barLR = Math.max(0, (vw - stageW) / 2);
+
+    // ✅ Stage View Height: darf über 16:9 wachsen, aber nur begrenzt
+    // (damit bei hohen Fenstern mehr Inhalt sichtbar wird, ohne Skalierung zu ändern)
+    const extraV = Math.max(0, vh - stageH);
+    const maxExtra = stageH * 0.35;              // feinjustieren: 0.20 .. 0.45
+    stageVH = stageH + Math.min(extraV, maxExtra);
+  }
 
   // ✅ Bottom-Bar bleibt dünn (oder 0), NIE riesig
   const maxBottom = stageH * 0.012;            // feinjustieren: 0.005 .. 0.020
@@ -185,10 +209,11 @@ function recalc() {
     dgroupEnd("layout");
   }
 }
-// Preview-Simulator: ?forcePhone=1 erzwingt Phone-Rotation
+// Alte Phone-Rotation (Querformat erzwingen) nur noch per ?forcePhone=1.
+// Standard: Hochformat-Layout (siehe recalc / html.portrait).
 const forcePhone = new URLSearchParams(location.search).get("forcePhone") === "1";
 
-if (forcePhone || isPhoneDevice()) {
+if (forcePhone) {
   document.documentElement.classList.add("rotate-phone");
   dlog("layout", "rotate-phone enabled", { forcePhone });
 } else {
@@ -269,7 +294,10 @@ const dataPromise = loadQuranData()
    ============================================================================ */
 
 // ✅ R2 Custom Domain (Audio Bucket) – muss VOR den Translation-Konstanten existieren
-const AUDIO_BASE_URL = "https://audio.quranm.com";
+// Lokal (localhost) über Dev-Proxy /__r2, weil R2 nur quranm.com per CORS erlaubt
+const AUDIO_BASE_URL = (location.hostname === "localhost" || location.hostname === "127.0.0.1")
+  ? `${location.origin}/__r2`
+  : "https://audio.quranm.com";
 
 // ✅ Translations liegen jetzt in R2 unter https://audio.quranm.com/translate/FINAL/...
 const TRANSLATIONS_ROOT = `${AUDIO_BASE_URL}/translate/FINAL`;
