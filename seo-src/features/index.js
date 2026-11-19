@@ -10,4 +10,5 @@ import widget from "./widget.js";
 import reciter from "./reciter.js";
 import juz from "./juz.js";
 import translit from "./translit.js";
-export const FEATURES = [widget, reciter, juz, translit];
+import dua from "./dua.js";
+export const FEATURES = [widget, reciter, juz, translit, dua];
