@@ -3,6 +3,7 @@
   "include": [
     "/sitemap.xml",
     "/sitemaps/*",
+    "/widget/today.json",
     "/ar/*",
     "/en/*",
     "/de/*",
