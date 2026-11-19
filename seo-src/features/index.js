@@ -12,4 +12,5 @@ import juz from "./juz.js";
 import translit from "./translit.js";
 import dua from "./dua.js";
 import facts from "./facts.js";
-export const FEATURES = [widget, reciter, juz, translit, dua, facts];
+import words from "./words.js";
+export const FEATURES = [widget, reciter, juz, translit, dua, facts, words];
