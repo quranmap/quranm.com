@@ -60,7 +60,8 @@ const normAr = (s) =>
     .replace(/ى/g, "ي")
     .replace(/\s+/g, "");
 
-fs.rmSync(OUT, { recursive: true, force: true });
+// Nur die eigenen Kern-Daten löschen – Feature-Daten (seo-data/<feature>/) bleiben stehen.
+for (const d of ["q", "t", "topic", "meta.json"]) fs.rmSync(path.join(OUT, d), { recursive: true, force: true });
 fs.mkdirSync(OUT, { recursive: true });
 const writeLines = (file, lines) => {
   fs.mkdirSync(path.dirname(file), { recursive: true });
