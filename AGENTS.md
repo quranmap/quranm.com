@@ -22,6 +22,16 @@ Static Quran reader SPA (`index.html`, `app.js`, `app.css`, `portrait.css`) plus
 - Pages must be useful and unique (real data on every page), light (inline CSS from `H.CSS`, no JS needed),
   mobile-first, `dir=rtl` handled by `layout`. No keyword stuffing, no near-duplicate pages.
 
+## Data conventions (learned from mistakes – read carefully)
+- `seo-data/q/<s>.txt`: line 0 = JSON array of the Arabic ayahs, **ayah a is at index a-1** (off-by-one bugs happened).
+  Lines 1..n = word-by-word data per ayah. `seo-data/t/<lang>/<s>.txt`: line a = translations of ayah a.
+- After building, verify 3 known refs (1:1 starts with بِسْمِ, 2:255 starts with ٱللَّهُ لَآ إِلَٰهَ, 114:6) by comparing
+  page text with the data. Run `node C:/Users/PC/Videos/quranm-dev/arabic-check.mjs http://127.0.0.1:<port>`.
+- Never count words/names by plain substring search in Arabic (diacritics, U+0670, ى, and substrings like نوح in نوحي).
+  Use the morphology corpus (lemma/POS) for any count, and compare with a known reference value.
+- Build scripts delete/write ONLY their own folder `seo-data/<name>/`. Never wipe `seo-data/`.
+- Strip end-of-ayah marks (U+06DD etc.) from displayed Arabic; show the ayah number separately.
+
 ## Religious content – hard rules
 - Quran text and translations only from repo/R2 data. Never generate, paraphrase or "fix" Quran text or a translation.
 - No hadith, no "virtues/benefits of surah X", no rulings (fatwa), no invented facts. Only facts derivable from the data.
