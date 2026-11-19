@@ -7,6 +7,7 @@
 //   /sitemap.xml, /sitemaps/<lang>-1.xml
 import { strings, fmt, ARABIC_SCRIPT_UI } from "./i18n.js";
 import { CSS } from "./style.js";
+import { FEATURES } from "./features/index.js";
 
 const SITE = "https://quranm.com";
 const CODE_VERSION = "6";
@@ -366,6 +367,7 @@ export function sitemapUrls(m, l) {
   for (const s of m.surahs) urls.push(P.surah(c, s));
   for (const t of m.themes) for (let p = 1; p <= topicPages(t); p++) urls.push(P.topic(c, t, p));
   for (const s of m.surahs) for (let a = 1; a <= s.ayahs; a++) urls.push(P.ayah(c, s.n, a));
+  for (const f of FEATURES) if (f.urls) for (const u of f.urls(m, l, H)) urls.push(u);
   return urls;
 }
 function sitemapLang(m, l) {
@@ -411,8 +413,19 @@ async function route(ctx, m, path) {
     if (!s || a > s.ayahs) return null;
     return html(await pageAyah(ctx, m, lang, L, s, a));
   }
+  // Zusatz-Seiten (seo-src/features/*.js): erstes Feature, das etwas liefert, gewinnt
+  for (const f of FEATURES) {
+    const r = await f.route({ ctx, m, lang, L, c, seg, path, H });
+    if (r) return r.redirect ? r : html(r.body ?? r);
+  }
   return null;
 }
+
+// Helfer für Features (nur lesen, nicht ändern)
+export const H = {
+  SITE, AUDIO, RECITER, P, esc, fmt, strings, CSS, layout, readerBtn,
+  surahName, surahMeaning, themeTitle, langLabel, fetchAsset, lines, line,
+};
 
 export async function handle(ctx) {
   const req = ctx.request;
