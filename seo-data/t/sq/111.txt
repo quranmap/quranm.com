@@ -1,0 +1,6 @@
+["Qoftë i shkatërruar Ebi Lehebi, e ai më është shkatërruar!","Atij nuk i bëri dobi pasuria e vet, as ajo çka fitoi!","Ai do të hyjë në një zjarr të ndezur flakë.","E edhe gruaja e tij, ajo që barti dru (ferra),","E në qafën e saj ajo ka një litar të përdredhur."]
+["Qoftë i shkatërruar Ebi Lehebi, e ai më është shkatërruar!","Iu thafshin duart Ebu Lehebit dhe u thaftë në gjithçka!"]
+["Atij nuk i bëri dobi pasuria e vet, as ajo çka fitoi!","Nuk do ta ndihmojnë atë as pasuria dhe as fitimet e tjera."]
+["Ai do të hyjë në një zjarr të ndezur flakë.","Ai, me siguri, do të hidhet në zjarrin me flakë të tërbuara,"]
+["E edhe gruaja e tij, ajo që barti dru (ferra),","po ashtu edhe gruaja e tij, që mbart drutë e zjarrit,"]
+["E në qafën e saj ajo ka një litar të përdredhur.","në qafën e saj do të ketë një litar prej fijesh palme."]

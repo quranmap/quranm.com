@@ -1,0 +1,7 @@
+["Dis : \"Ô vous les infidèles !","Je n’adore pas ce que vous adorez.","Et vous n’êtes pas adorateurs de ce que j’adore.","Je ne suis pas adorateur de ce que vous adorez.","Et vous n’êtes pas adorateurs de ce que j’adore.","A vous votre religion, et à moi ma religion.\""]
+["Dis : \"Ô vous les infidèles !","Dis : « Ô vous les mécréants !","Dis : « Vous mécréants qui avez rejeté la foi !"]
+["Je n’adore pas ce que vous adorez.","Je n’adore point ce que vous adorez.","Je n’adore pas les dieux que vous adorez,"]
+["Et vous n’êtes pas adorateurs de ce que j’adore.","Pas plus que vous n’allez adorer ce que j’adore.","et vous n’adorez pas le Dieu que j’adore."]
+["Je ne suis pas adorateur de ce que vous adorez.","Ni moi je ne vais adorer ce que vous avez adoré.","Je ne vénérerai jamais vos fausses divinités,"]
+["Et vous n’êtes pas adorateurs de ce que j’adore.","Pas plus que vous n’allez adorer ce que j’adore.","et vous ne vénérerez jamais mon Seigneur."]
+["A vous votre religion, et à moi ma religion.\"","Vous, vous avez votre religion et moi, j’ai la mienne. »","Vous suivez votre culte et moi le mien. »"]

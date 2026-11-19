@@ -1,0 +1,8 @@
+["Je! Umemwona anaye kadhibisha Malipo?","Huyo ndiye anaye msukuma yatima,","Wala hahimizi kumlisha masikini.","Basi, ole wao wanao sali,","Ambao wanapuuza Sala zao;","Ambao wanajionyesha,","Nao huku wanazuia msaada."]
+["Je! Umemwona anaye kadhibisha Malipo?","Je, umemwona anayekadhibisha Malipo?"]
+["Huyo ndiye anaye msukuma yatima,","Basi huyo ndiye anayemsukuma yatima."]
+["Wala hahimizi kumlisha masikini.","Wala hahimizi kumlisha masikini."]
+["Basi, ole wao wanao sali,","Basi, ole wao wanaoswali."]
+["Ambao wanapuuza Sala zao;","Ambao wanapuuza Swala zao."]
+["Ambao wanajionyesha,","Ambao wanajionyesha."]
+["Nao huku wanazuia msaada.","Na wanazuia msaada."]

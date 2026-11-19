@@ -1,0 +1,5 @@
+["\"Ka ce: \"Shi ne Allah Makaɗaĩci.\"","\"Allah wanda ake nufin Sa da buƙata.\"","\"Bai haifa ba, kuma ba a haife Shi ba.\"","\"Kuma babu ɗaya da ya kasance kini a gare Shi"]
+["\"Ka ce: \"Shi ne Allah Makaɗaĩci.\"","Ka ce: \"Shi ne Allah Makaɗaĩci.\""]
+["\"Allah wanda ake nufin Sa da buƙata.\"","\"Allah wanda ake nufin Sa da buƙata.\""]
+["\"Bai haifa ba, kuma ba a haife Shi ba.\"","\"Bai haifa ba, kuma ba a haife Shi ba.\""]
+["\"Kuma babu ɗaya da ya kasance kini a gare Shi","\"Kuma babu ɗaya da ya kasance tamka a gare Shi.\""]

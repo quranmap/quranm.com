@@ -1,0 +1,7 @@
+0
+["1. Loba: Nasengi libateli epai ya Nkolo ya bato."]
+["2. Mokonzi ya bato."]
+["3. Nzambe ya bato."]
+["4. Kowuta na komekama ya milimo mabe."]
+["5. Oyo azali kofula makanisi mabe o’mitema mia bato."]
+["6. Azala okati ya bilima to bato."]

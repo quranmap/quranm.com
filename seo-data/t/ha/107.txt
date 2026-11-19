@@ -1,0 +1,8 @@
+["Shin, ka ga wanda ke ƙaryatãwa game da sakamako?","To, wan nan shi ne ke tunkure marãya (daga haƙƙinsa).","Kuma bã ya kwaaitarwa bisa bãyar da abinci ga matalauci.","To, bone yã tabbata ga masallata.","Waɗan da suke masu shagala daga sallar su.","Waɗan da suke yin riya (ga ayyukansu)","Kuma suna hana taimako."]
+["Shin, ka ga wanda ke ƙaryatãwa game da sakamako?","Shin, ka ga wanda ke ƙaryatãwa game da sakamako?"]
+["To, wan nan shi ne ke tunkure marãya (daga haƙƙinsa).","To, wannan shi ne ke tunkue marãya (daga haƙƙinsa)."]
+["Kuma bã ya kwaaitarwa bisa bãyar da abinci ga matalauci.","Kuma bã ya kwaaitarwa bisa bãyar da abinci ga matalauci."]
+["To, bone yã tabbata ga masallata.","To, bone yã tabbata ga masallata."]
+["Waɗan da suke masu shagala daga sallar su.","Waɗanda suke masu shagala daga sallarsu."]
+["Waɗan da suke yin riya (ga ayyukansu)","Waɗanda suke yin riya (ga ayyukansu)"]
+["Kuma suna hana taimako.","Kuma suna hana taimako."]

@@ -1,0 +1,8 @@
+["A e ke parë ti (a e sheh) atë, që përgënjeshtron përgjegjësinë dhe llogarinënë botën tjetër?","Po ai është që e përzë në mënyrë të vrazhdë bonjakun.","Dhe që nuk nxit për të ushqyer të varfërin.","Pra shkatërrim është për ata që falen,","të cilët ndaj namazit të tyre janë të pakujdesshëm.","Ata që vetëm shtiren (sa për sy e faqe).","Dhe nuk japin as sendin më të vogël (as hua)."]
+["A e ke parë ti (a e sheh) atë, që përgënjeshtron përgjegjësinë dhe llogarinënë botën tjetër?","A e ke parë atë që mohon Ditën e Llogarisë?"]
+["Po ai është që e përzë në mënyrë të vrazhdë bonjakun.","Ky është ai që i dëbon ashpër jetimët"]
+["Dhe që nuk nxit për të ushqyer të varfërin.","dhe nuk nxit që t’i jepet ushqim të varfrit."]
+["Pra shkatërrim është për ata që falen,","Mjerë për ata, të cilët kur falen,"]
+["të cilët ndaj namazit të tyre janë të pakujdesshëm.","janë të pakujdesshëm për namazet,"]
+["Ata që vetëm shtiren (sa për sy e faqe).","të cilët duan vetëm që të duken"]
+["Dhe nuk japin as sendin më të vogël (as hua).","dhe nuk u japin ndihmë nevojtarëve."]

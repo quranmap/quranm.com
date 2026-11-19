@@ -1,0 +1,8 @@
+["¿Acaso has observado a quien desmiente el Día del Juicio?","Es quien rechaza al huérfano","y no exhorta a alimentar al pobre.","¡Ay de los orantes","que son negligentes en sus oraciones [realizándolas fuera de su horario],","y solo las realizan para hacerse ver,","y se niegan a prestar hasta la mínima ayuda!"]
+["¿Acaso has observado a quien desmiente el Día del Juicio?","1. ¿Has reparado (¡oh, Muhammad!) en quien niega la resurrección y la rendición de cuentas?","¿Has reparado (¡oh, Muhammad!) en quien niega la resurrección y la rendición de cuentas?"]
+["Es quien rechaza al huérfano","2. Ese es quien rechaza al huérfano","Ese es quien rechaza al huérfano"]
+["y no exhorta a alimentar al pobre.","3. y no alienta (a los demás) a alimentar a los pobres (ni los alimenta él mismo).","y no alienta (a los demás) a alimentar a los pobres (ni los alimenta él mismo)."]
+["¡Ay de los orantes","4. ¡Ay de aquellos que rezan","¡Ay de aquellos que rezan"]
+["que son negligentes en sus oraciones [realizándolas fuera de su horario],","5. de manera negligente (fuera de su debido tiempo, o no son constantes en la práctica del salat)!","de manera negligente (fuera de su debido tiempo, o no son constantes en la práctica del salat)!"]
+["y solo las realizan para hacerse ver,","6. Esos que rezan para que la gente los vea (y piensen que son piadosos)","Esos que rezan para que la gente los vea (y piensen que son piadosos)"]
+["y se niegan a prestar hasta la mínima ayuda!","7. mientras que no prestan la mínima ayuda (a quien la necesita).","mientras que no prestan la mínima ayuda (a quien la necesita)."]

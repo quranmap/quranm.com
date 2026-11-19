@@ -1,0 +1,7 @@
+["1. Dheh: Gaalooy.","2. Anigu ma caabudayo waxaad caabudeysaan,","3. Idinkuna ma caabuddaan Kaan Anigu caabudo (Alle Keliya).","4. Anigu ma caabudayo waxaad idinku caabudeysaan (oo ilaahyo been ah).","5. Idinkuna ma caabuddaan Kaan anigu caabudo (Alle Weyne kor ahaaye).","6.Waxaad leedihiin diintiinna (camalkiinna), aniguna waxaa leeyahay diinteyda (camalkeyga, oo barii baan idinka ahay)."]
+["1. Dheh: Gaalooy.","Waxaad dhahdaa, Gaalooy."]
+["2. Anigu ma caabudayo waxaad caabudeysaan,","Ma caabudayo waxaad caabudaysaan."]
+["3. Idinkuna ma caabuddaan Kaan Anigu caabudo (Alle Keliya).","Idinna ma caabudaysaan Eebahaan caabudi."]
+["4. Anigu ma caabudayo waxaad idinku caabudeysaan (oo ilaahyo been ah).","Mana caabudin waxaad caabuddeen,"]
+["5. Idinkuna ma caabuddaan Kaan anigu caabudo (Alle Weyne kor ahaaye).","Idinkuna (hadda) ma caabudaysaan Eebahaan caabudi."]
+["6.Waxaad leedihiin diintiinna (camalkiinna), aniguna waxaa leeyahay diinteyda (camalkeyga, oo barii baan idinka ahay).","Idinkana Diintiina yaad leedihiin, Anna Diintaydaan leeyahay."]

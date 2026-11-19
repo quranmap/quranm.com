@@ -1,0 +1,5 @@
+["Sabõda sãbon kuraishawa.","Sãbon su na tafiyar hunturu da ta bazara.","Sabõda haka sai su bauta wa Ubangijin wannan Gida (Ka'abah).","wanda Ya ciyar da su (Ya hana su) daga yunwa, kuma Ya amintar da su daga wani tsõro."]
+["Sabõda sãbon kuraishawa.","Sabõda sãbon ¡uraishawa."]
+["Sãbon su na tafiyar hunturu da ta bazara.","Sãbonsu na tafiyar hunturu da ta bazara."]
+["Sabõda haka sai su bauta wa Ubangijin wannan Gida (Ka'abah).","Sabõda haka sai su bauta wa Ubangijin wannan Gida (Ka'abah)."]
+["wanda Ya ciyar da su (Ya hana su) daga yunwa, kuma Ya amintar da su daga wani tsõro.","wanda Ya ciyar da su (Ya hana su) daga yunwa, kuma Ya amintar da su daga wani tsõro."]

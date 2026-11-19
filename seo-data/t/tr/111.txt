@@ -1,0 +1,6 @@
+["Ebu Leheb'in elleri kurusun; kurudu da!","Malı ve kazandığı kendisine fayda vermedi.","Alevli ateşe yaslanacaktır.","Karısı da, boynunda bir ip olduğu halde ona odun taşıyacaktır.","Karısı da, boynunda bir ip olduğu halde ona odun taşıyacaktır."]
+["Ebu Leheb'in elleri kurusun; kurudu da!","Elleri kurusun Ebu Leheb’in! Zaten kurudu da.","Ebu Leheb'in elleri kurusun (yok olsun o), zaten yok oldu ya.","Ebu Leheb'in iki eli kurusun!","Elleri kurusun Ebu Leheb’in, kurudu da."]
+["Malı ve kazandığı kendisine fayda vermedi.","Malı ve kazandıkları ona bir fayda vermedi.","Ne malı ne de kazandığı onu kurtaramadı.","Kurudu da. Malı ve kazandıkları ona fayda vermedi.","Ona, malı ve kazandıkları fayda vermedi."]
+["Alevli ateşe yaslanacaktır.","O, alevli bir ateşe girecektir.","(O), alevli bir ateşe girecektir.","O, alevli bir ateşte yanacak.","O, alevli bir ateşe girecektir."]
+["Karısı da, boynunda bir ip olduğu halde ona odun taşıyacaktır.","Karısı da odun taşıyacak.","Karısı da odun hamalı olarak (onunla beraber girecektir).","Odun taşıyıcı olarak karısı da (ateşe girecek).","Karısı da, odun taşıyıcısı…"]
+["Karısı da, boynunda bir ip olduğu halde ona odun taşıyacaktır.","Boynunda hurma lifinden bir halat olduğu halde.","Boynunda da hurma lifinden bir ip olacaktır.","Ve boynunda hurma lifinden bükülmüş bir ip olduğu halde.","Boynunda hurma lifinden bir halat ile…"]

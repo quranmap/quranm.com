@@ -1,0 +1,6 @@
+["Zar nisi čuo šta je sa vlasnicima slona Gospodar tvoj uradio!","Zar lukavstvo njihovo nije omeo","i protiv njih jata ptica poslao,","Koje su na njih grumenje od gline pečene bacale,","pa ih On kao lišće koje su crvi istočili učinio?"]
+["Zar nisi čuo šta je sa vlasnicima slona Gospodar tvoj uradio!","Zar nisi čuo šta je s vlasnicima slona Gospodar tvoj uradio?","Zar nisi čuo šta je s vlasnicima slona Gospodar tvoj uradio?"]
+["Zar lukavstvo njihovo nije omeo","Zar lukavstvo njihovo nije upropastio","Zar lukavstvo njihovo nije upropastio"]
+["i protiv njih jata ptica poslao,","i na njih jata ptica poslao,","i na njih jata ptica poslao,"]
+["Koje su na njih grumenje od gline pečene bacale,","koje su na njih grumenje od gline pečene bacale,","koje su na njih grumenje od gline pečene bacale,"]
+["pa ih On kao lišće koje su crvi istočili učinio?","pa ih kao izjedeno lišće učinio?","pa ih kao izjedeno lišće učinio?"]

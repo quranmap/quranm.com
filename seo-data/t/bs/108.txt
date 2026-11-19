@@ -1,0 +1,4 @@
+["Mi smo ti, uistinu, Kevser dali!","zato se Gospodaru svome moli i kurban kolji,","onaj koji tebe mrzi sigurno će on bez spomena ostati."]
+["Mi smo ti, uistinu, Kevser dali!","Mi smo ti, uistinu, Kevser dali,","Mi smo ti, uistinu, Kevser dali!"]
+["zato se Gospodaru svome moli i kurban kolji,","pa klanjaj Gospodaru svome i kurban kolji,","pa klanjaj Gospodaru svome i kurban kolji,"]
+["onaj koji tebe mrzi sigurno će on bez spomena ostati.","onaj koji tebe mrzi – sigurno će on bez spomena ostati.","onaj koji tebe mrzi - sigurno će on bez spomena ostati."]

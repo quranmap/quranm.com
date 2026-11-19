@@ -1,0 +1,6 @@
+0
+["1. Omonaki te ndenge Nkolo nayo asalaki na bato ya nzoku?"]
+["2. Asukisaki mayele na bango te?"]
+["3. Atindaki likolo na bango mapinga ya bandeke."]
+["4. Babwakelaki bango mabanga ya mabele."]
+["5. Mpe ekomisaki bango lokola misisa miliami."]

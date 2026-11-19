@@ -1,0 +1,8 @@
+["Siehst du (nicht) denjenigen, der das Gericht für Lüge erklärt?","Das ist derjenige, der die Waise zurückstößt","und nicht zur Speisung des Armen anhält.","Wehe nun den Betenden,","denjenigen, die auf ihre Gebete nicht achten,","denjenigen, die dabei (nur) gesehen werden wollen;","und die Hilfeleistung verweigern!"]
+["Siehst du (nicht) denjenigen, der das Gericht für Lüge erklärt?","Hast du den gesehen, der das Gericht leugnet?"]
+["Das ist derjenige, der die Waise zurückstößt","Das ist der, der die Waise wegstößt"]
+["und nicht zur Speisung des Armen anhält.","und nicht zur Speisung des Armen anspornt."]
+["Wehe nun den Betenden,","Wehe denjenigen Betenden"]
+["denjenigen, die auf ihre Gebete nicht achten,","die (bei der Verrichtung) ihres Gebets nachlässig sind"]
+["denjenigen, die dabei (nur) gesehen werden wollen;","die (nur dabei) gesehen werden wollen"]
+["und die Hilfeleistung verweigern!","und die Hilfeleistung verweigern."]

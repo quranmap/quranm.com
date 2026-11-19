@@ -1,0 +1,6 @@
+["A nuk e ke parë se ç’bëri Zoti yt me poseduesi e elefantit?","A nuk ua bëri përpjekjen e tyre të dështuar?","Dhe Ai kundër tyre lëshoi shpendë që vinin tufë-tufë!","Dhe i gjuanin ata me gurë nga balta e gurëzuar!","Dhe ata i bëri si gjeth i grimcuar (i përtypur)!"]
+["A nuk e ke parë se ç’bëri Zoti yt me poseduesi e elefantit?","Vallë, a nuk ke dëgjuar ti se si bëri Zoti yt me njerëzit e elefantit?"]
+["A nuk ua bëri përpjekjen e tyre të dështuar?","A nuk ua prishi atyre kurthin,"]
+["Dhe Ai kundër tyre lëshoi shpendë që vinin tufë-tufë!","duke dërguar kundër atyre tufa zogjsh,"]
+["Dhe i gjuanin ata me gurë nga balta e gurëzuar!","të cilët i gjuajtën me gurë prej baltës së pjekur?"]
+["Dhe ata i bëri si gjeth i grimcuar (i përtypur)!","Dhe kështu, i bëri si byk i ngrënë."]

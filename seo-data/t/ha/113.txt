@@ -1,0 +1,6 @@
+["\"Ka ce \"ina neman tsari ga Ubangijin safiya\"","\"Daga sharrin abin da Ya halitta.\"","\"Da sharrin dare, idan ya yi duhu.\"","\"Da sharrin mãtã mãsu tõfi a cikin kuduri\"","\"Da sharrin mai hãsada idan ya yi hasada.\""]
+["\"Ka ce \"ina neman tsari ga Ubangijin safiya\"","Ka ce \"ina neman tsari ga Ubangijin safiya\""]
+["\"Daga sharrin abin da Ya halitta.\"","\"Daga sharrin abin da Ya halitta.\""]
+["\"Da sharrin dare, idan ya yi duhu.\"","\"Da sharrin dare, idan ya yi duhu.\""]
+["\"Da sharrin mãtã mãsu tõfi a cikin kuduri\"","\"Da sharrin mãtã mãsu tõfi a cikin ƙulle-ƙulle.\""]
+["\"Da sharrin mai hãsada idan ya yi hasada.\"","\"Da sharrin mai hãsada idan ya yi hasada.\""]

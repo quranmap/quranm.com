@@ -1,0 +1,9 @@
+0
+["1. Biso te nde tofungolaki yo motema?"]
+["2. Mpe tokitisaki mokumba nayo?"]
+["3. Mokumba moye mozalaki kobuka mokongo nayo?"]
+["4. Mpe totombolaki lokumu nayo?"]
+["5. Ya soló, mpasi ezalaka péne ya esengo."]
+["6. Ya solo, mpasi ezalaka péne ya esengo."]
+["7. Soki osilisi misala telema тропа kosambela."]
+["8. Mpe pona Nkolo nayo zala na elikya."]

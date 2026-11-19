@@ -1,0 +1,4 @@
+["Doğrusu sana pek çok nimet vermişizdir.","Öyleyse Rabbin için namaz kıl, kurban kes.","Doğrusu adı sanı ortadan kalkacak olan, sana kin tutan kimsedir."]
+["Doğrusu sana pek çok nimet vermişizdir.","Şüphesiz biz sana Kevser'i verdik.","Muhakkak biz sana Kevser'i verdik.","(Rasûlüm!) Kuşkusuz biz sana Kevser'i verdik.","Biz sana Kevser'i verdik."]
+["Öyleyse Rabbin için namaz kıl, kurban kes.","Öyleyse sen de Rabbin için namaz kıl ve kurban kes!","Öyleyse Rabb'in için namaz kıl ve kurban kes.","Şimdi sen Rabbin için namaz kıl ve kurban kes.","Öyleyse sen de Rabbin için namaz kıl ve kurban kes!"]
+["Doğrusu adı sanı ortadan kalkacak olan, sana kin tutan kimsedir.","Şüphesiz asıl sana kin besleyenin soyu kesiktir.","Muhakkak ki sonu kesik olan, sana buğzedendir.","Asıl sonu kesik olan, şüphesiz sana hınç besleyendir.","Gerçek şu ki sana kin besleyen kesiktir."]

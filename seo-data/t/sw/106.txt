@@ -1,0 +1,5 @@
+["Kwa walivyo zoea Maqureshi,","Kuzoea kwao safari za siku za baridi na siku za joto.","Basi nawamuabudu Mola Mlezi wa Nyumba hii,","Ambaye anawalisha wasipate njaa, na anawalinda na khofu."]
+["Kwa walivyo zoea Maqureshi,","Kwa walivyozoea Maqureshi."]
+["Kuzoea kwao safari za siku za baridi na siku za joto.","Kuzoea kwao safari za siku za baridi na siku za joto."]
+["Basi nawamuabudu Mola Mlezi wa Nyumba hii,","Basi na wamuabudu Mola Mlezi wa Nyumba hii."]
+["Ambaye anawalisha wasipate njaa, na anawalinda na khofu.","Ambaye anawalisha kutokana na njaa, na anawalinda kutokana na hofu."]

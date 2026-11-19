@@ -1,0 +1,12 @@
+0
+["1. Bobangi."]
+["2. Eloko nini yango bobangi?"]
+["3. Nani akoyebisa yo eloko nini bobangi?"]
+["4. Mokolo moye bato bakozala lokola bapomboli ya kopanzana."]
+["5. Mpe bangomba bikozalaka lokola bilamba bilemba."]
+["6. Mpona moto oyo emekelo naye ekozala nkilo,"]
+["7. Akozala na bomoyi ya esengo."]
+["8. Kasi mpona moto oyo emekelo naye ekozanga kilo,"]
+["9. Bozongi mpe bofandi naye ekozala libulu ya mozindo makasi."]
+["10. Mpe nani akoyebisa yo ntina na yango?"]
+["11. Ezali nde moto ya makasi."]

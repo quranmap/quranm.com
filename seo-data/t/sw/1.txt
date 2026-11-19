@@ -1,0 +1,8 @@
+["KWA JINA LA MWENYEZI MUNGU MWINGI WA REHEMA MWENYE KUREHEMU.","Sifa njema zote ni za Mwenyezi Mungu, Mola Mlezi wa viumbe vyote;","Mwingi wa Rehema Mwenye Kurehemu;","Mwenye Kumiliki Siku ya Malipo.","Wewe tu tunakuabudu, na Wewe tu tunakuomba msaada.","Tuongoe njia iliyo nyooka,","Njia ya ulio waneemesha, siyo ya walio kasirikiwa, wala walio potea."]
+["KWA JINA LA MWENYEZI MUNGU MWINGI WA REHEMA MWENYE KUREHEMU.","Kwa jina la Mwenyezi Mungu, Mwingi wa rehema, Mwenye kurehemu."]
+["Sifa njema zote ni za Mwenyezi Mungu, Mola Mlezi wa viumbe vyote;","Sifa njema zote ni za Mwenyezi Mungu, Mola Mlezi wa walimwengu.[1]"]
+["Mwingi wa Rehema Mwenye Kurehemu;","Mwingi wa rehema, Mwenye kurehemu.[1]"]
+["Mwenye Kumiliki Siku ya Malipo.","Mmiliki wa Siku ya Malipo."]
+["Wewe tu tunakuabudu, na Wewe tu tunakuomba msaada.","Ni Wewe tu tunayeabudu, na ni Wewe tu tunayeomba msaada."]
+["Tuongoe njia iliyo nyooka,","Tuongoe kwenye njia iliyonyooka."]
+["Njia ya ulio waneemesha, siyo ya walio kasirikiwa, wala walio potea.","Njia ya wale uliowaneemesha. Siyo ya wale waliokasirikiwa, wala waliopotea."]

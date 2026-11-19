@@ -1,0 +1,8 @@
+["Nakakita ka ba sa nagpapasinungaling sa Paggantimpala?","Sapagkat iyon ay ang nagsasalya sa ulila","at hindi nanghihikayat sa pagpapakain sa dukha.","Kaya kapighatian ay ukol sa mga tagapagdasal,","na sila sa pagdarasal nila ay mga nagpapabaya,","na sila ay nagpapakitang-tao","at nagkakait ng munting tulong."]
+["Nakakita ka ba sa nagpapasinungaling sa Paggantimpala?","Nakita ba nimo siya kinsa nga naglimod sa (Adlaw sa Paghukom ug) Pagbalos?"]
+["Sapagkat iyon ay ang nagsasalya sa ulila","Siya nga maoy nakiglabot sa ang ilo [uban sa mapintas],"]
+["at hindi nanghihikayat sa pagpapakain sa dukha.","Ug wala mag-awhag (sa uban) sa pagpakaon sa mga kabus."]
+["Kaya kapighatian ay ukol sa mga tagapagdasal,","Busa alaut kadtong ˹mga salingkapaw˺ nga nag-ampo -"]
+["na sila sa pagdarasal nila ay mga nagpapabaya,","Kinsa walay pagtagad ngadto sa ilang mga pag-ampo;"]
+["na sila ay nagpapakitang-tao","kadtong gusto lamang nga magpakita sa ilang maayo nga binuhatan 'ug daygon',"]
+["at nagkakait ng munting tulong.","Ug nagdumili sa paghatag bisan sa pinakasimple nga tabang sa uban."]

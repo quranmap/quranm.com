@@ -1,0 +1,10 @@
+0
+["1. Etumbu ezali тропа moto nyoso ya songisongi тре maloba mabe."]
+["2. Oyó azali kosangisa bomengo naye mpe azali kotanga yango."]
+["3. Akanisi ete bomengo naye ekopesa ye bomoyi ya seko?"]
+["4. Kasi te. Ya soló, akobwakama na kati ya Hutwama(1)."]
+["5. Nani akoyebisa yo eloko nini Hutwama?"]
+["6. Moto ya Allah oyo ezali ya kopelisama,"]
+["7. Oyo ezali komata na motema."]
+["8. Ya sólo, yango ekozipa bango."]
+["9. Na makonzi (ya moto) mitandami na molongo."]

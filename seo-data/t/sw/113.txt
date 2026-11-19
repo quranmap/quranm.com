@@ -1,0 +1,6 @@
+["Sema: Najikinga kwa Mola Mlezi wa mapambazuko,","Na shari ya alivyo viumba,","Na shari ya giza la usiku liingiapo,","Na shari ya wanao pulizia mafundoni,","Na shari ya hasidi anapo husudu."]
+["Sema: Najikinga kwa Mola Mlezi wa mapambazuko,","Sema: Ninajikinga kwa Mola Mlezi wa mapambazuko."]
+["Na shari ya alivyo viumba,","Kutokana na uovu wa alivyoviumba."]
+["Na shari ya giza la usiku liingiapo,","Na kutokana na uovu wa giza la usiku liingiapo."]
+["Na shari ya wanao pulizia mafundoni,","Na kutokana na uovu wa wanaopuliza mafundoni."]
+["Na shari ya hasidi anapo husudu.","Na kutokana na uovu wa mwenye husuda anapohusudu."]
