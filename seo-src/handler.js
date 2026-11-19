@@ -160,7 +160,7 @@ ${body}
 </main>
 <footer>
 <details class="langs"><summary>${esc(L.languages)} · ${esc(lang.native)}</summary><div class="langlist">${langLinks}</div></details>
-<p><a href="/${lang.code}/">${esc(L.allSurahs)}</a> · <a href="/">quranm.com</a> · <a href="/sitemap.xml">Sitemap</a></p>
+<p><a href="/${lang.code}/">${esc(L.allSurahs)}</a> · <a href="/">quranm.com</a> · <a href="/sitemap.xml">Sitemap</a> · <a href="/${lang.code}/widget/">Widget</a> · <a href="/impressum/" rel="nofollow">Impressum</a> · <a href="/datenschutz/" rel="nofollow">Datenschutz</a></p>
 </footer>
 </body>
 </html>`;
