@@ -181,7 +181,7 @@ console.log(stats.join(" "));
 console.log(themeSizes);
 
 // ---------- _routes.json: Functions run ONLY on SEO paths (max 100 rules) ----------
-const include = ["/sitemap.xml", "/sitemaps/*", ...langs.map((l) => `/${l.code}/*`)];
+const include = ["/sitemap.xml", "/sitemaps/*", "/widget/today.json", ...langs.map((l) => `/${l.code}/*`)];
 if (include.length > 100) throw new Error("_routes.json exceeds 100 rules");
 fs.writeFileSync(path.join(REPO, "_routes.json"), JSON.stringify({ version: 1, include, exclude: [] }, null, 2) + "\n");
 console.log(`_routes.json: ${include.length} include rules`);
