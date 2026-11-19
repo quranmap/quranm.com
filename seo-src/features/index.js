@@ -6,4 +6,6 @@
 //     urls(m, l, H) { return ["/en/juz/1/", ...] },   // für die Sitemap
 //   };
 // Neue Features NUR hier unten importieren und anhängen (je eine Zeile).
-export const FEATURES = [];
+import juz from "./juz.js";
+
+export const FEATURES = [juz];
