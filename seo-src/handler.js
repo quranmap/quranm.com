@@ -10,7 +10,7 @@ import { CSS } from "./style.js";
 import { FEATURES } from "./features/index.js";
 
 const SITE = "https://quranm.com";
-const CODE_VERSION = "6";
+const CODE_VERSION = "7";
 const AUDIO = "https://audio.quranm.com";
 const RECITER = "Mishari%20Rashid%20al%20Afasy";
 const TOPIC_PAGE = 50;
@@ -100,10 +100,10 @@ function surahName(m, code, s) {
   return ARABIC_SCRIPT_UI.has(code) ? s.ar : s.tr;
 }
 function surahMeaning(code, s) {
-  return code === "de" ? s.de : code === "en" ? s.en : "";
+  return s.meanings?.[code] || (code === "en" ? s.en : code === "de" ? s.de : "");
 }
 function themeTitle(code, t) {
-  return code === "de" ? t.de : t.en;
+  return t.titles?.[code] || (code === "en" ? t.en : code === "de" ? t.de : `${strings(code).topics} · ${code}`);
 }
 function langLabel(L, lang) {
   return L.langName || lang.name;

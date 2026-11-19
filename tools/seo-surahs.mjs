@@ -117,6 +117,12 @@ export const SURAH_INFO = [
   ["Mankind", "Die Menschen", "M"],
 ];
 
+// The English and German meanings are the maintained baseline. Additional locale
+// maps can be added without changing the line-file format or request handler.
+export const SURAH_MEANINGS = Object.fromEntries(
+  SURAH_INFO.slice(1).map((v, i) => [i + 1, { en: v[0], de: v[1] }]),
+);
+
 // Well-known names of single ayahs (used in titles / h1).
 export const AYAH_NAMES = {
   "2:255": ["Ayat al-Kursi", "آية الكرسي"],
@@ -161,3 +167,7 @@ export const THEMES = {
   34: ["angels", "Angels", "Engel"],
   35: ["provision-rizq", "Provision (Rizq)", "Versorgung (Rizq)"],
 };
+
+export const THEME_TITLES = Object.fromEntries(
+  Object.values(THEMES).map(([slug, en, de]) => [slug, { en, de }]),
+);

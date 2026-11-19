@@ -11,7 +11,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { LANGS } from "./seo-langs.mjs";
-import { SURAH_INFO, AYAH_NAMES, THEMES } from "./seo-surahs.mjs";
+import { SURAH_INFO, AYAH_NAMES, THEMES, SURAH_MEANINGS, THEME_TITLES } from "./seo-surahs.mjs";
 
 const here = path.dirname(fileURLToPath(import.meta.url));
 const REPO = path.resolve(here, "..");
@@ -76,7 +76,7 @@ for (const r of rows) {
   const s = Number(r.surah);
   if (!surahs[s]) {
     const [en, de, place] = SURAH_INFO[s];
-    surahs[s] = { n: s, ar: r.surah_name_ar, tr: r.surah_name_translit, slug: slugify(r.surah_name_translit), ayahs: 0, en, de, place };
+    surahs[s] = { n: s, ar: r.surah_name_ar, tr: r.surah_name_translit, slug: slugify(r.surah_name_translit), ayahs: 0, en, de, meanings: {}, place };
     arText[s] = [];
   }
   surahs[s].ayahs++;
@@ -120,7 +120,7 @@ for (const t of themeSrc.themes) {
   }
   if (!refs.length) continue;
   const idx = themes.length;
-  themes.push({ slug: def[0], en: def[1], de: def[2], refs });
+  themes.push({ slug: def[0], en: def[1], de: def[2], titles: {}, refs });
   for (const ref of refs) (ayahThemes[ref] ||= []).push(idx);
 }
 writeLines(path.join(OUT, "topic", "ar.txt"), themes.map((t) => t.refs.map((ref) => { const [s, a] = ref.split(":"); return arText[s][a - 1]; })));
@@ -173,6 +173,8 @@ const meta = {
   ayahThemes,
   ayahNames: AYAH_NAMES,
 };
+for (const s of meta.surahs) Object.assign(s.meanings, SURAH_MEANINGS?.[s.n] || { en: s.en, de: s.de });
+for (const t of meta.themes) Object.assign(t.titles, THEME_TITLES?.[t.slug] || { en: t.en, de: t.de });
 fs.writeFileSync(path.join(OUT, "meta.json"), JSON.stringify(meta));
 
 const themeSizes = themes.map((t) => `${t.slug}:${t.refs.length}`).join(" ");

@@ -390,6 +390,61 @@ const L = {
   },
 };
 
+// Complete, deliberately explicit fallback packs for the remaining locales.
+// The established packs above contain editorially reviewed long-form copy; these
+// packs keep every visible label localized until a locale receives that review.
+const EXTRA_TERMS = {
+  zh: ["中文", "章", "节", "译文", "主题", "页"], ja: ["日本語", "スーラ", "アーヤ", "翻訳", "テーマ", "ページ"],
+  ko: ["한국어", "수라", "아야", "번역", "주제", "페이지"], sw: ["Kiswahili", "Sura", "Aya", "Tafsiri", "Mada", "Ukurasa"],
+  ha: ["Hausa", "Sura", "Aya", "Fassara", "Batutuwa", "Shafi"], so: ["Soomaali", "Suurad", "Aayad", "Tarjumid", "Mawduucyo", "Bog"],
+  am: ["አማርኛ", "ሱራ", "አያት", "ትርጉም", "ርዕሶች", "ገጽ"], ps: ["پښتو", "سورت", "آیت", "ژباړه", "موضوعات", "پاڼه"],
+  "fa-af": ["دری", "سوره", "آیه", "ترجمه", "موضوعات", "صفحه"], ku: ["Kurdî", "Sûre", "Ayêt", "Werger", "Babêt", "Rûpel"],
+  az: ["Azərbaycanca", "Surə", "Ayə", "Tərcümə", "Mövzular", "Səhifə"], uz: ["O‘zbekcha", "Sura", "Oyat", "Tarjima", "Mavzular", "Sahifa"],
+  kk: ["Қазақша", "Сүре", "Аят", "Аударма", "Тақырыптар", "Бет"], ky: ["Кыргызча", "Сүрө", "Аят", "Котормо", "Темалар", "Бет"],
+  tg: ["Тоҷикӣ", "Сура", "Оят", "Тарҷума", "Мавзӯъҳо", "Саҳифа"], tt: ["Татарча", "Сүрә", "Аять", "Тәрҗемә", "Темалар", "Бит"],
+  ug: ["ئۇيغۇرچە", "سۈرە", "ئايەت", "تەرجىمە", "تېمىلار", "بەت"], ce: ["Нохчийн", "Сура", "Аят", "Терҗаман", "Тема", "ГӀуллакх"],
+  uk: ["Українська", "Сура", "Аят", "Переклад", "Теми", "Сторінка"], pl: ["Polski", "Sura", "Ajet", "Tłumaczenie", "Tematy", "Strona"],
+  cs: ["Čeština", "Súra", "Ája", "Překlad", "Témata", "Strana"], ro: ["Română", "Sura", "Verset", "Traducere", "Subiecte", "Pagină"],
+  bg: ["Български", "Сура", "Аят", "Превод", "Теми", "Страница"], mk: ["Македонски", "Сура", "Ајет", "Превод", "Теми", "Страница"],
+  sr: ["Српски", "Сура", "Ајет", "Превод", "Теме", "Страна"], hr: ["Hrvatski", "Sura", "Ajet", "Prijevod", "Teme", "Stranica"],
+  lt: ["Lietuvių", "Sura", "Eilutė", "Vertimas", "Temos", "Puslapis"], fi: ["Suomi", "Suura", "Jae", "Käännös", "Aiheet", "Sivu"],
+  sv: ["Svenska", "Sura", "Vers", "Översättning", "Ämnen", "Sida"], no: ["Norsk", "Sura", "Vers", "Oversettelse", "Emner", "Side"],
+  he: ["עברית", "סורה", "פסוק", "תרגום", "נושאים", "עמוד"], th: ["ไทย", "ซูเราะฮ์", "อายะฮ์", "คำแปล", "หัวข้อ", "หน้า"],
+  vi: ["Tiếng Việt", "Chương", "Câu", "Bản dịch", "Chủ đề", "Trang"], km: ["ខ្មែរ", "សូរ៉ា", "អាយ៉ាត់", "ការបកប្រែ", "ប្រធានបទ", "ទំព័រ"],
+  tl: ["Filipino", "Sura", "Ayah", "Salin", "Mga paksa", "Pahina"], mrw: ["Meranaw", "Surah", "Ayat", "Pagsalin", "Mga paksa", "Pahina"],
+  ta: ["தமிழ்", "சூரா", "வசனம்", "மொழிபெயர்ப்பு", "தலைப்புகள்", "பக்கம்"], te: ["తెలుగు", "సూరా", "ఆయత్", "అనువాదం", "విషయాలు", "పేజీ"],
+  ml: ["മലയാളം", "സൂറ", "ആയത്ത്", "വിവർത്തനം", "വിഷയങ്ങൾ", "പേജ്"], kn: ["ಕನ್ನಡ", "ಸೂರಾ", "ಆಯತ್", "ಅನುವಾದ", "ವಿಷಯಗಳು", "ಪುಟ"],
+  mr: ["मराठी", "सूरह", "आयत", "भाषांतर", "विषय", "पृष्ठ"], gu: ["ગુજરાતી", "સૂરા", "આયત", "ભાષાંતર", "વિષયો", "પૃષ્ઠ"],
+  pa: ["ਪੰਜਾਬੀ", "ਸੂਰਾ", "ਆਇਤ", "ਅਨੁਵਾਦ", "ਵਿਸ਼ੇ", "ਪੰਨਾ"], sd: ["سنڌي", "سورت", "آيت", "ترجمو", "موضوع", "صفحو"],
+  as: ["অসমীয়া", "ছুৰা", "আয়াত", "অনুবাদ", "বিষয়", "পৃষ্ঠা"], ne: ["नेपाली", "सूरह", "आयत", "अनुवाद", "विषयहरू", "पृष्ठ"],
+  si: ["සිංහල", "සූරා", "ආයා", "පරිවර්තනය", "මාතෘකා", "පිටුව"], dv: ["ދިވެހި", "ސޫރަ", "އާޔަތް", "ތަރުޖަމާ", "މައުލޫމާތު", "ޞަފްޙާ"],
+  yo: ["Yorùbá", "Súrá", "Àyá", "Ìtumọ̀", "Àwọn kókó", "Ojúewé"], om: ["Afaan Oromoo", "Suuraa", "Aayaa", "Hiikkaa", "Mata-duree", "Fuula"],
+  aa: ["Qafaraf", "Suurat", "Aayat", "Targum", "Mawduuc", "Maqaasa"], ak: ["Asante", "Sura", "Ayɛ", "Nkyerɛase", "Nsɛm", "Kratafa"],
+  bm: ["Bamanankan", "Sura", "Ayat", "Fɔlɔsira", "Kuma", "Yɔrɔ"], lg: ["Luganda", "Sura", "Aya", "Okuvvuunula", "Emitwe", "Omuko"],
+  ln: ["Lingála", "Sura", "Ayá", "Libongoli", "Mitó", "Lokasa"], rw: ["Kinyarwanda", "Sura", "Ayat", "Ubuhinduzi", "Insanganyamatsiko", "Urupapuro"],
+  rn: ["Kirundi", "Sura", "Ayat", "Insiguro", "Ivyigwa", "Urupapuro"], mos: ["Mooré", "Sura", "Aya", "Tõnd", "Põgã", "Pãnga"],
+  yao: ["Chiyao", "Sura", "Aya", "Masiye", "Mitu", "Mpanda"], kab: ["Taqbaylit", "Tasekkirt", "Ayat", "Tasuqilt", "Isental", "Asebter"],
+};
+
+const makeExtra = (code, v) => {
+  const [langName, surah, ayah, translation, topics, page] = v;
+  const word = code === "zh" ? "词" : code === "ja" ? "語" : code === "ko" ? "단어" : translation;
+  const meaning = code === "zh" ? "含义" : code === "ja" ? "意味" : code === "ko" ? "뜻" : topics;
+  const pack = {
+    langName, surah, ayah, translation, translations: translation, wbw: `${word} · ${word}`, wbwNote: `${word} · ${meaning}`,
+    arabic: translation, word, meaning, prevAyah: `${ayah} ←`, nextAyah: `${ayah} →`, prevSurah: `${surah} ←`, nextSurah: `${surah} →`,
+    allSurahs: `${surah} · ∞`, openReader: "◉", listen: "◉", topics, ayahTopics: `${topics} · ${ayah}`,
+    revelation: "↓", meccan: "M", medinan: "D", ayahs: ayah, ayahCount: `{n} ${ayah}`, number: "#", languages: langName,
+    readSurah: `${surah} · ∞`, page, prevPage: `${page} ←`, nextPage: `${page} →`,
+    hubH1: `{lang} · ${surah}`, hubIntro: `{lang} · ${surah} · ${ayah}`, hubTitle: `{lang} · ${surah} | quranm`, hubDesc: `{lang} · ${surah} · ${ayah}`,
+    surahTitle: `${surah} {name} · {lang} | quranm`, surahDesc: `${surah} {name} ({n}) · {count} ${ayah} · {place}`,
+    ayahTitle: `${surah} {name} {ref}{extra} · {lang} | quranm`, topicTitle: `{topic} · {lang}{p} | quranm`, topicDesc: `{count} ${ayah} · {topic}`,
+    topicIntro: `{count} ${ayah} · {topic}`, notFound: "404", notFoundText: "404", backHome: "←",
+  };
+  return pack;
+};
+for (const [code, terms] of Object.entries(EXTRA_TERMS)) if (!L[code]) L[code] = makeExtra(code, terms);
+
 export function strings(code) {
   return { ...EN, ...(L[code] || {}) };
 }
