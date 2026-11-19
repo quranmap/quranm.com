@@ -7,5 +7,5 @@
 //   };
 // Neue Features NUR hier unten importieren und anhängen (je eine Zeile).
 import widget from "./widget.js";
-
-export const FEATURES = [widget];
+import reciter from "./reciter.js";
+export const FEATURES = [widget, reciter];
