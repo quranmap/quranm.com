@@ -4,6 +4,7 @@ const UI = {
 };
 
 const ui = (code) => UI[code] || UI.en;
+const stripQuranMarkers = (value) => String(value ?? "").replace(/[\u06DD\u06DE]/g, "").trim();
 const slugPath = (c, slug) => `/${c}/dua/${slug}/`;
 const indexPath = (c) => `/${c}/dua/`;
 
@@ -41,7 +42,8 @@ export default {
     }).join("") : "";
     const ayahs = item.refs.map((x) => {
       const ar = x.s === item.refs[0].s ? arAll[x.a - 1] : null;
-      return `<article class="ay" id="a${x.s}-${x.a}"><a class="ref" href="${H.P.ayah(c, x.s, x.a)}">${H.esc(x.ref)}</a><p class="ar big" lang="ar" dir="rtl">${H.esc(ar || x.ar)}</p><p class="actions"><a class="btn" href="${H.P.ayah(c, x.s, x.a)}">${H.esc(text.readAyah)}</a> ${H.readerBtn(L, x.s, x.a)}</p></article>`;
+      const source = ar || x.ar;
+      return `<article class="ay" id="a${x.s}-${x.a}"><a class="ref" href="${H.P.ayah(c, x.s, x.a)}">${H.esc(x.ref)}</a><p class="ar big" lang="ar" dir="rtl">${H.esc(stripQuranMarkers(source))} <span class="end">﴿${x.a}﴾</span><span lang="ar" hidden>${H.esc(source)}</span></p><p class="actions"><a class="btn" href="${H.P.ayah(c, x.s, x.a)}">${H.esc(text.readAyah)}</a> ${H.readerBtn(L, x.s, x.a)}</p></article>`;
     }).join("");
     const title = entryTitle(c, item);
     const meta = `${text.from}: ${refsLabel(item)}${item.speaker ? ` · ${text.speaker}: ${item.speaker}` : ""}`;

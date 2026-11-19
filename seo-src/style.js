@@ -34,6 +34,8 @@ audio{width:100%;margin-top:8px;height:40px}
 .info{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:8px;margin:0 0 14px}
 .info div{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:8px 12px}
 .info dt{font-size:12px;color:var(--mu)}.info dd{margin:0;font-weight:600}
+.surah-links{display:flex;flex-wrap:wrap;gap:6px;font-weight:400}
+.surah-links a{background:var(--chip);border:1px solid var(--line);border-radius:999px;padding:2px 9px;color:var(--tx);white-space:nowrap}
 .surahs{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:8px}
 .surahs a{display:flex;align-items:center;gap:12px;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px 12px;color:var(--tx);height:100%}
 .surahs a:hover{border-color:var(--ac);text-decoration:none}
@@ -62,4 +64,5 @@ footer{margin-top:36px;border-top:1px solid var(--line);padding-top:14px;font-si
 .langs summary{cursor:pointer;color:var(--ac)}
 .langlist{display:flex;flex-wrap:wrap;gap:6px 14px;margin-top:10px}
 .langlist a[aria-current]{font-weight:700;color:var(--tx)}
+@media (max-width:639px){.info{grid-template-columns:1fr}}
 `;

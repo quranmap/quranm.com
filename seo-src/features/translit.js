@@ -6,6 +6,7 @@ const UI = {
   tr: { indexTitle: "Kuran transkripsiyonu – Latin harfleriyle okuyun | quranm", indexH1: "Kuran transkripsiyonu", intro: "114 surenin tamamını Arapça metin ve çeviriyle Latin harfleriyle okuyun.", title: "{name} Suresi transkripsiyonu – Latin harfleriyle okuyun | quranm", h1: "{name} Suresi transkripsiyonu", translit: "Transkripsiyon", translation: "Çeviri", source: "Transkripsiyon kaynağı: Tanzil English Transliteration. Kaynak ve güncellemeler için Tanzil'e bakın.", sourceLink: "Tanzil çeviri indirme", unavailable: "Bu dilde çeviri bulunmuyor.", browse: "Transkripsiyonu aç" },
 };
 const ui = (code) => UI[code] || UI.en;
+const stripQuranMarkers = (value) => String(value ?? "").replace(/[\u06DD\u06DE]/g, "").trim();
 const pathFor = (c, s) => `/${c}/surah/${s.n}-${s.slug}/transliteration/`;
 const indexFor = (c) => `/${c}/transliteration/`;
 const translation = async (H, ctx, lang, s, a) => {
@@ -28,7 +29,7 @@ async function pageSurah({ ctx, m, lang, L, H, s }) {
   const translit = translitLines.slice(0, s.ayahs).map((line) => JSON.parse(line));
   const rows = await Promise.all(translit.map(async (v, i) => ({ v, tr: await translation(H, ctx, lang, s, i + 1), a: i + 1 })));
   const trDir = lang.tr[0]?.d || lang.dir;
-  const items = rows.map(({ v, tr, a }) => `<article class="ay" id="a${a}"><a class="ref" href="${H.P.ayah(lang.code, s.n, a)}">${s.n}:${a}</a><p class="ar" lang="ar" dir="rtl">${H.esc(ar[a - 1])} <span class="end">۝${a}﴾</span></p><p class="tr" lang="en" dir="ltr"><b>${H.esc(T.translit)}:</b> ${H.esc(v)}</p>${tr ? `<p class="tr" dir="${trDir}"><b>${H.esc(T.translation)}:</b> ${H.esc(tr)}</p>` : ""}</article>`).join("");
+  const items = rows.map(({ v, tr, a }) => `<article class="ay" id="a${a}"><a class="ref" href="${H.P.ayah(lang.code, s.n, a)}">${s.n}:${a}</a><p class="ar" lang="ar" dir="rtl">${H.esc(stripQuranMarkers(ar[a - 1]))} <span class="end">﴿${a}﴾</span><span lang="ar" hidden>${H.esc(ar[a - 1])}</span></p><p class="tr" lang="en" dir="ltr"><b>${H.esc(T.translit)}:</b> ${H.esc(v)}</p>${tr ? `<p class="tr" dir="${trDir}"><b>${H.esc(T.translation)}:</b> ${H.esc(tr)}</p>` : ""}</article>`).join("");
   const name = H.surahName(m, lang.code, s);
   const body = `<h1>${H.esc(H.fmt(T.h1, { name }))}</h1><p class="actions">${H.readerBtn(L, s.n, 1)} <a class="btn" href="${H.P.surah(lang.code, s)}">${H.esc(L.readSurah)}</a></p><div class="ayahs">${items}</div><p class="note">${H.esc(T.source)} <a href="https://tanzil.net/trans/" rel="nofollow">${H.esc(T.sourceLink)}</a>${!lang.tr.length ? ` ${H.esc(T.unavailable)}` : ""}</p>`;
   return H.layout({ m, lang, L, body, title: H.fmt(T.title, { name }), desc: T.intro, ogType: "article", path: pathFor(lang.code, s), altPath: (c) => pathFor(c, s), crumbs: [["quranm", "/"], [lang.native, H.P.hub(lang.code)], [`${L.surah} ${name}`, H.P.surah(lang.code, s)], [T.translit, pathFor(lang.code, s)]] });

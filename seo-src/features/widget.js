@@ -1,7 +1,7 @@
 const SITE = "https://quranm.com";
 const LANGS = ["en", "de", "tr", "ur", "ar", "fr", "id"];
 const T = {
-  en: { title: "Free Quran verse of the day widget for your mosque or website", desc: "Add a free Quran verse of the day to your mosque, community or blog website. No tracking, cookies or ads.", intro: "Give visitors a small daily connection to the Quran with a fast, privacy-friendly embed.", demo: "Live demo", install: "Copy and paste", options: "Options", faq: "FAQ", freeQ: "Is it free?", freeA: "Yes. The widget and its daily Quran verse feed are free to use.", privacyQ: "Does it track visitors?", privacyA: "No. It uses no cookies, analytics or tracking.", platformQ: "Does it work on WordPress?", platformA: "Yes. Add the code to a Custom HTML block or widget.", worksQ: "What does it show?", worksA: "Arabic text, a translation, the reference and a link back to quranm.com." },
+  en: { title: "Free Quran verse of the day widget for your mosque or website", desc: "Add a free Quran verse of the day to your mosque, community or blog website. No tracking, cookies or ads.", intro: "Give visitors a small daily connection to the Quran with a fast, privacy-friendly embed.", demo: "Live demo", install: "Copy and paste", options: "Options", faq: "FAQ", openReader: "Open in Quran reader", freeQ: "Is it free?", freeA: "Yes. The widget and its daily Quran verse feed are free to use.", privacyQ: "Does it track visitors?", privacyA: "No. It uses no cookies, analytics or tracking.", platformQ: "Does it work on WordPress?", platformA: "Yes. Add the code to a Custom HTML block or widget.", worksQ: "What does it show?", worksA: "Arabic text, a translation, the reference and a link back to quranm.com." },
   de: { title: "Kostenloses Quran-Vers-des-Tages-Widget für Moschee oder Website", desc: "Füge deiner Moschee-, Gemeinde- oder Blog-Website kostenlos einen Quran-Vers des Tages hinzu.", intro: "Schenke Besuchern jeden Tag eine kurze Verbindung zum Quran – schnell und datenschutzfreundlich.", demo: "Live-Demo", install: "Kopieren und einfügen", options: "Optionen", faq: "FAQ", freeQ: "Ist es kostenlos?", freeA: "Ja. Widget und täglicher Quran-Vers sind kostenlos.", privacyQ: "Werden Besucher verfolgt?", privacyA: "Nein. Es gibt keine Cookies, Analyse oder Nachverfolgung.", platformQ: "Funktioniert es mit WordPress?", platformA: "Ja. Füge den Code in einen Custom-HTML-Block ein.", worksQ: "Was wird angezeigt?", worksA: "Arabischer Text, Übersetzung, Referenz und ein Link zu quranm.com." },
   tr: { title: "Caminiz veya web siteniz için ücretsiz günlük Kur'an ayeti bileşeni", desc: "Caminize, topluluğunuza veya blogunuza ücretsiz günlük Kur'an ayeti ekleyin.", intro: "Ziyaretçilerinize hızlı ve gizlilik dostu bir günlük Kur'an bağlantısı sunun.", demo: "Canlı demo", install: "Kopyala ve yapıştır", options: "Seçenekler", faq: "SSS", freeQ: "Ücretsiz mi?", freeA: "Evet. Bileşen ve günlük ayet akışı ücretsizdir.", privacyQ: "Takip yapıyor mu?", privacyA: "Hayır. Çerez, analiz veya takip kullanmaz.", platformQ: "WordPress'te çalışır mı?", platformA: "Evet. Kodu Özel HTML bloğuna ekleyin.", worksQ: "Ne gösterir?", worksA: "Arapça metin, çeviri, referans ve quranm.com bağlantısı." },
   ur: { title: "مسجد یا ویب سائٹ کے لیے مفت روزانہ قرآن آیت ویجیٹ", desc: "اپنی مسجد، کمیونٹی یا بلاگ ویب سائٹ پر مفت روزانہ قرآن کی آیت شامل کریں۔", intro: "زائرین کو روزانہ قرآن سے تیز اور رازداری پر مبنی تعلق دیں۔", demo: "لائیو ڈیمو", install: "کاپی اور پیسٹ", options: "اختیارات", faq: "اکثر سوالات", freeQ: "کیا یہ مفت ہے؟", freeA: "جی ہاں، ویجیٹ اور روزانہ آیت مفت ہیں۔", privacyQ: "کیا یہ ٹریک کرتا ہے؟", privacyA: "نہیں، کوکیز، تجزیہ یا ٹریکنگ نہیں ہے۔", platformQ: "کیا WordPress پر چلتا ہے؟", platformA: "جی ہاں، کوڈ Custom HTML بلاک میں شامل کریں۔", worksQ: "یہ کیا دکھاتا ہے؟", worksA: "عربی متن، ترجمہ، حوالہ اور quranm.com کا لنک۔" },
@@ -10,7 +10,12 @@ const T = {
   id: { title: "Widget ayat Al-Qur'an harian gratis untuk masjid atau situs Anda", desc: "Tambahkan ayat Al-Qur'an harian gratis ke situs masjid, komunitas, atau blog Anda.", intro: "Berikan pengunjung hubungan harian dengan Al-Qur'an secara cepat dan ramah privasi.", demo: "Demo langsung", install: "Salin dan tempel", options: "Pilihan", faq: "FAQ", freeQ: "Apakah gratis?", freeA: "Ya. Widget dan umpan ayat harian gratis digunakan.", privacyQ: "Apakah melacak pengunjung?", privacyA: "Tidak. Tanpa cookie, analitik, atau pelacakan.", platformQ: "Apakah berfungsi di WordPress?", platformA: "Ya. Tambahkan kode ke blok HTML Kustom.", worksQ: "Apa yang ditampilkan?", worksA: "Teks Arab, terjemahan, referensi, dan tautan ke quranm.com." },
 };
 const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c]);
-const tr = (code) => T[code] || T.en;
+const tr = (code) => ({ ...T.en, ...(T[code] || {}) });
+function todayItem(days, now = new Date()) {
+  const start = Date.UTC(1970, 0, 1);
+  const utcDay = Math.floor((Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate()) - start) / 86400000);
+  return days[((utcDay % days.length) + days.length) % days.length];
+}
 
 export async function todayResponse(ctx, requestUrl) {
   const url = new URL(requestUrl);
@@ -18,10 +23,8 @@ export async function todayResponse(ctx, requestUrl) {
   const text = await ctx.env.ASSETS.fetch(new Request(new URL("/seo-data/widget/days.json", requestUrl))).then((r) => r.ok ? r.text() : null);
   if (!text) return new Response("Widget data unavailable", { status: 503 });
   const days = JSON.parse(text);
-  const start = Date.UTC(1970, 0, 1);
   const now = new Date();
-  const utcDay = Math.floor((Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate()) - start) / 86400000);
-  const item = days[((utcDay % days.length) + days.length) % days.length];
+  const item = todayItem(days, now);
   const nextUtcMidnight = Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate() + 1);
   const seconds = Math.max(60, Math.floor((nextUtcMidnight - now.getTime()) / 1000));
   return new Response(JSON.stringify({ ref: item.ref, surah: item.surah, s: item.s, a: item.a, arabic: item.arabic, translation: item.translations[lang] || item.translations.en, lang }), {
@@ -35,7 +38,7 @@ export default {
     if (path !== `/${lang.code}/widget/`) return null;
     const S = tr(lang.code);
     const raw = await H.fetchAsset(ctx, "/seo-data/widget/days.json");
-    const item = raw ? JSON.parse(raw)[0] : null;
+    const item = raw ? todayItem(JSON.parse(raw)) : null;
     if (!item) return null;
     const code = `<div class="quranm-ayah" data-lang="${lang.code}"></div>\n<script src="https://quranm.com/widget/ayah.js" async></script>`;
     const ref = `${item.surah} ${item.ref}`;
