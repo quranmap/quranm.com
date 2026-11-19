@@ -1,0 +1,8 @@
+["L-ai văzut pe cel care socoate Legea minciună?","El este cel care izgoneşte orfanul,","şi nu lasă să fie hrănit sărmanul.","Vai acelor rugători","ce în rugăciunea lor stau nepăsători!","Ei vor să fie cât mai la vedere,","însă împiedică ceea ce se cere!"]
+["L-ai văzut pe cel care socoate Legea minciună?","Îl vezi tu pe cel care tăgăduiește Judecata?","Îl vezi tu pe cel care tăgăduieşte Judecata?"]
+["El este cel care izgoneşte orfanul,","El este cel care-l alungă pe orfan [cu duritate]","El este acela care l alungă pe orfan [cu asprime]"]
+["şi nu lasă să fie hrănit sărmanul.","Și nu încurajează hrănirea sărmanului.","Şi nu îndeamnă la hrănirea sărmanului."]
+["Vai acelor rugători","Și vai celor care fac Rugăciunea [fiind fără de grijă față de ea]","Şi vai acelora care fac Rugăciunea"]
+["ce în rugăciunea lor stau nepăsători!","Cei care întârzie Rugăciunea lor [până la timpul în care aceasta iese]","Fiind fără de grijă faţă de Rugăciunea lor,"]
+["Ei vor să fie cât mai la vedere,","Care sunt numai ipocriți[1]","Care sunt numai făţarnici"]
+["însă împiedică ceea ce se cere!","Și opresc de la ajutor.","Şi opresc de la ajutor!"]

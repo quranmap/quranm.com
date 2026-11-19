@@ -1,0 +1,4 @@
+["Ne, vërtet, të dhamë ty shumë mira.","Andaj, ti falu dhe prej kurban për hurë të Zotit tënd!","E s’ka dyshim se urrejtësi yt është farësosur."]
+["Ne, vërtet, të dhamë ty shumë mira.","Me të vërtetë që Ne të kemi dhënë ty shumë të mira,"]
+["Andaj, ti falu dhe prej kurban për hurë të Zotit tënd!","andaj, falu (vetëm) për Zotin tënd dhe ther kurban!"]
+["E s’ka dyshim se urrejtësi yt është farësosur.","Sigurisht, ai që të urren ty, ai vetë është fatprerë."]

@@ -1,0 +1,6 @@
+["Siehst du nicht, wie dein Herr mit den Leuten des Elefanten verfuhr?","Ließ Er nicht ihre List verlorengehen","und sandte gegen sie Vögel in aufeinanderfolgenden Schwärmen,","die sie mit Steinen aus gebranntem Lehm bewarfen,","und sie so wie abgefressene Halme machte?"]
+["Siehst du nicht, wie dein Herr mit den Leuten des Elefanten verfuhr?","Hast du nicht gesehen, wie dein Herr mit den Leuten des Elefanten verfahren ist?"]
+["Ließ Er nicht ihre List verlorengehen","Hat Er nicht ihre List mißlingen lassen"]
+["und sandte gegen sie Vögel in aufeinanderfolgenden Schwärmen,","und Vögel in Scharen über sie gesandt"]
+["die sie mit Steinen aus gebranntem Lehm bewarfen,","die sie mit brennenden Steinen bewarfen"]
+["und sie so wie abgefressene Halme machte?","und sie dadurch wie abgefressene Saat gemacht?"]

@@ -1,0 +1,7 @@
+["Spune: “O, tăgăduitorilor!","Eu nu mă închin la ceea ce vă închinaţi voi.","Nici voi nu sunteţi închinători la ceea ce mă închin eu.","Nici eu nu sunt închinător la ceea ce v-aţi închinat voi.","Nici voi nu sunteţi închinători la ceea ce mă închin eu.","Voi aveţi legea voastră, iar eu am legea mea!”"]
+["Spune: “O, tăgăduitorilor!","Spune: „O, voi, necredincioșilor!","Spune: „O, voi, necredincioşi!"]
+["Eu nu mă închin la ceea ce vă închinaţi voi.","Eu nu ador ceea ce voi adorați","Eu nu ador ceea ce adoraţi"]
+["Nici voi nu sunteţi închinători la ceea ce mă închin eu.","Și nici voi nu adorați ceea ce ador eu.","Şi nici voi nu adoraţi ceea ce ador eu."]
+["Nici eu nu sunt închinător la ceea ce v-aţi închinat voi.","Și eu nu voi adora ceea ce voi adorați","Nici adorarea mea nu este asemeni adorării voastre,"]
+["Nici voi nu sunteţi închinători la ceea ce mă închin eu.","Și nici voi nu veți adora ceea ce ador eu","Şi nici adorarea voastră nu este asemenea adorării mele!"]
+["Voi aveţi legea voastră, iar eu am legea mea!”","Voi aveți religia voastră, iar eu am religia mea!”","Voi aveţi religia voastră, iar eu am religia mea!”"]

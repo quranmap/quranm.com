@@ -1,0 +1,7 @@
+["Thuaj: “Mbështetem në Zotin e njerëzve!","Sunduesin e njerëzve,","Të adhuruarin e njerëzve,","Prej të keqes së cytësit që fshihet.","I cili hedh dyshime në zemrat e njerëzve,","Qoftë ai nga xhinët ose nga njerëzit”."]
+["Thuaj: “Mbështetem në Zotin e njerëzve!","Thuaj: “Kërkoj mbështetje te Zoti i njerëzve,"]
+["Sunduesin e njerëzve,","Sundimtari i njerëzve,"]
+["Të adhuruarin e njerëzve,","i Adhuruari (i vetëm me të drejtë) i njerëzve,"]
+["Prej të keqes së cytësit që fshihet.","nga sherri i djallit cytës që fshihet (pasi cyt)"]
+["I cili hedh dyshime në zemrat e njerëzve,","e që hedh dyshime në gjokset e njerëzve,"]
+["Qoftë ai nga xhinët ose nga njerëzit”.","(qoftë ai djall) prej xhindeve apo njerëzve!”"]

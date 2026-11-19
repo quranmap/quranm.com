@@ -1,0 +1,8 @@
+["1. Ka warran kan beeniya is abaal marinta (Aakhiro).","2. Kaasu waa kan ula dhaqma agoonta si qallafsan [1].","3. Oo aan ku dhiirra gelin (dadka) quudinta miskiinka [2].","4. Waxaa hoog leh kuwaa tukada (munaafiqiinta ah),","5. Ee ka dhoohan salaaddooda (ka dib dhiga waqtiyadooda).","6. Kuwaasoo u fala (samaha) si loo arko.","7. U diida (dadka) maacuunta (waxyaalaha yar yar ee laysugu kaalmeeyo, zako iyo sadaqo iyaga warkoodba daaye)."]
+["1. Ka warran kan beeniya is abaal marinta (Aakhiro).","Ka warrama kan beenin Abaalmarinta (Qiyaamada)."]
+["2. Kaasu waa kan ula dhaqma agoonta si qallafsan [1].","Kaas xooga Agoonta (xageeda)."]
+["3. Oo aan ku dhiirra gelin (dadka) quudinta miskiinka [2].","Aan kuna boorrinaynin quudinta miskiinka."]
+["4. Waxaa hoog leh kuwaa tukada (munaafiqiinta ah),","Waxaa halaag u sugnaaday kuwa tukan (waa Munaafiqiinta)."]
+["5. Ee ka dhoohan salaaddooda (ka dib dhiga waqtiyadooda).","Ee haddana halmaansan Salaaddooda."]
+["6. Kuwaasoo u fala (samaha) si loo arko.","Dadkana is tusiya."]
+["7. U diida (dadka) maacuunta (waxyaalaha yar yar ee laysugu kaalmeeyo, zako iyo sadaqo iyaga warkoodba daaye).","Una diida alaabta (Laysugu kaalmeeyo)."]

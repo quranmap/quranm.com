@@ -1,0 +1,7 @@
+["Katakanlah, \"Aku berlindung kepada Tuhannya manusia,","Raja manusia,","sembahan manusia,","dari kejahatan (bisikan) setan yang bersembunyi,","yang membisikkan (kejahatan) ke dalam dada manusia,","dari (golongan) jin dan manusia.\""]
+["Katakanlah, \"Aku berlindung kepada Tuhannya manusia,","Katakanlah, \"Aku berlindung kepada Tuhan (yang memelihara dan menguasai) manusia.","Katakanlah, “Aku berlindung kepada Tuhannya manusia,"]
+["Raja manusia,","Raja manusia.","Raja manusia,"]
+["sembahan manusia,","Sembahan manusia.","Sembahan manusia,"]
+["dari kejahatan (bisikan) setan yang bersembunyi,","Dari kejahatan (bisikan) setan yang biasa bersembunyi,","dari kejahatan (bisikan) setan yang bersembunyi,"]
+["yang membisikkan (kejahatan) ke dalam dada manusia,","yang membisikkan (kejahatan) ke dalam dada manusia,","yang membisikkan (kejahatan) ke dalam dada manusia,"]
+["dari (golongan) jin dan manusia.\"","dari (golongan) jin dan manusia\".","dari (golongan) jin dan manusia.”"]

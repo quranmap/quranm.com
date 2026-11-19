@@ -1,0 +1,6 @@
+["Ne e zbritëm atë (Kur’anin) në natën e Kadrit.","E ç’të bëri ty të dijsh se ç’është nata e Kadrit?","Nata e Kadrit është më e rëndësishme se një mijë muaj!","Me lejen e Zotit të tyre në (atë natë) të zbresin engjëj dhe shpirti (Xhibrili) për secilën çështje.","Ajo (që përcakton Zoti) është paqe deri në agim të mëngjesit."]
+["Ne e zbritëm atë (Kur’anin) në natën e Kadrit.","Ne e kemi zbritur (Kuranin) në Natën e Kadrit."]
+["E ç’të bëri ty të dijsh se ç’është nata e Kadrit?","E kush mund të ta shpjegojë ty se ç’është nata e Kadrit?"]
+["Nata e Kadrit është më e rëndësishme se një mijë muaj!","Nata e Kadrit është më e mirë se një mijë muaj."]
+["Me lejen e Zotit të tyre në (atë natë) të zbresin engjëj dhe shpirti (Xhibrili) për secilën çështje.","Engjëjt dhe Shpirti (Xhebraili), me lejen e Zotit të tyre, zbresin në këtë natë, me të gjitha vendimet."]
+["Ajo (që përcakton Zoti) është paqe deri në agim të mëngjesit.","Paqe është ajo deri në lindjen e agimit."]

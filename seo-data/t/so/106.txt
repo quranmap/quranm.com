@@ -1,0 +1,5 @@
+["1. Caadeysigii Quraysh darteed.","2. Ay ka caada yeesheen safarka xagaaga iyo jilaalka (si nabdoonaan ah ganacsiga).","3. Ee ha caabudeen Rabbiga Baytkan (Kacbada Makkah ku taal).","4. Kaasoo ka quudiyey gaajo, kana aamin yeelay cabsi."]
+["1. Caadeysigii Quraysh darteed.","Caadaysigii Qureesheed."]
+["2. Ay ka caada yeesheen safarka xagaaga iyo jilaalka (si nabdoonaan ah ganacsiga).","Ay ka caadayeesheen Safarka Xagaaga iyo Jilaalka darteed."]
+["3. Ee ha caabudeen Rabbiga Baytkan (Kacbada Makkah ku taal).","Ha u caabudeen Eebeha Beydkan (Kacbada)."]
+["4. Kaasoo ka quudiyey gaajo, kana aamin yeelay cabsi.","Eebahi ka quudiyay gaajo, kana aamingaliyay cabsi."]

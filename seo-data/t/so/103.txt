@@ -1,0 +1,4 @@
+["1. Waxaan ku dhaartay waqtiga.","2. Hubaal Aadmigu wuxuu ku sugan yahay khasaaro dhan.","3. Kuwa (Xaqa) rumeeyey mooyee oo samaha fala, ee isu dardaraama Xaqa (iyo caddaalad falka), isuna dardaarama sabarka (iyo sugnaanta)."]
+["1. Waxaan ku dhaartay waqtiga.","Eebe wuxuu ku dhartay Waqtiga Casarka ah."]
+["2. Hubaal Aadmigu wuxuu ku sugan yahay khasaaro dhan.","In Dadku khasaaro ku sugunyahay."]
+["3. Kuwa (Xaqa) rumeeyey mooyee oo samaha fala, ee isu dardaraama Xaqa (iyo caddaalad falka), isuna dardaarama sabarka (iyo sugnaanta).","Marka laga reebo kuwa rumeeyay xaqa ee Camal fiican fala, isuna dardaarma xaqa, isuna dardaarma Samirka."]

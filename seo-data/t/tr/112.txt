@@ -1,0 +1,5 @@
+["De ki: O Allah bir tektir.","Allah her şeyden müstağni ve her şey O'na muhtaçtır.","O doğurmamış ve doğmamıştır.","Hiçbir şey O'na denk değildir."]
+["De ki: O Allah bir tektir.","De ki: O Allah birdir.","De ki; O Allah bir tektir.","De ki : O, Allah birdir.","De ki: O Allah birdir."]
+["Allah her şeyden müstağni ve her şey O'na muhtaçtır.","Allah Samed'dir.","Allah eksiksiz, sameddir (Bütün varlıklar O'na muhtaç, fakat O, hiç bir şeye muhtaç değildir","Allah sameddir.","Allah Samed'dir."]
+["O doğurmamış ve doğmamıştır.","Doğurmamıştır, doğurulmamıştır.","Doğurmadı ve doğurulmadı","O, doğurmamış ve doğmamıştır.","Doğurmadı ve doğrulmadı."]
+["Hiçbir şey O'na denk değildir.","O'nun hiçbir dengi yoktur.","O 'na bir denk de olmadı.","Onun hiçbir dengi yoktur.","Onun hiçbir dengi yoktur."]

@@ -1,0 +1,7 @@
+["Sema: Ninajikinga kwa Mola Mlezi wa wanaadamu,","Mfalme wa wanaadamu,","Mungu wa wanaadamu,","Na shari ya wasiwasi wa Shetani, Khannas,","Anaye tia wasiwasi katika vifua vya watu,","Kutokana na majini na wanaadamu."]
+["Sema: Ninajikinga kwa Mola Mlezi wa wanaadamu,","Sema: Ninajikinga kwa Mola Mlezi wa watu."]
+["Mfalme wa wanaadamu,","Mfalme wa watu."]
+["Mungu wa wanaadamu,","Mungu wa watu."]
+["Na shari ya wasiwasi wa Shetani, Khannas,","Kutokana na uovu wa Shetani mtia wasiwasi, ajifichaye mno (Al-Khannaas)."]
+["Anaye tia wasiwasi katika vifua vya watu,","Anayetia wasiwasi katika vifua vya watu."]
+["Kutokana na majini na wanaadamu.","Kutokana na majini na watu."]

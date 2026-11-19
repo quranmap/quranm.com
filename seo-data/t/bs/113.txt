@@ -1,0 +1,6 @@
+["Reci: \"Utječem se Gospodaru svitanja","od zla onoga što On stvara,","i od zla mrkle noći kada razastre tmine,","i od zla onih koje u čvorove pušu","i od zla zavidljivca kad zavist ne krije!\""]
+["Reci: \"Utječem se Gospodaru svitanja","Reci: “Utječem se Gospodaru svitanja,","Reci: \"Utječem se Gospodaru svitanja,"]
+["od zla onoga što On stvara,","od zla onoga što On stvara.","od zla onoga što On stvara.\""]
+["i od zla mrkle noći kada razastre tmine,","i od zla mrkle noći kada razastre tmine,","i od zla mrkle noći kad razastre tmine,"]
+["i od zla onih koje u čvorove pušu","i od zla onih koje u čvorove pušu,","i od zla onih koje u čvorove pušu"]
+["i od zla zavidljivca kad zavist ne krije!\"","i od zla zavidnika kad zavidi.\"","i od zla zavidnika kad zavidi.\""]

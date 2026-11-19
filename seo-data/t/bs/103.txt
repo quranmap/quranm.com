@@ -1,0 +1,4 @@
+["Tako mi vremena –","čovjek, doista, gubi,","samo ne oni koji vjeruju i dobra djela čine, i koji jedni drugima istinu preporučuju i koji jedni drugima preporučuju strpljenje."]
+["Tako mi vremena –","Tako mi vremena,","Tako mi vremena,"]
+["čovjek, doista, gubi,","doista je čovjek na gubitku,","doista je čovjek na gubitku,"]
+["samo ne oni koji vjeruju i dobra djela čine, i koji jedni drugima istinu preporučuju i koji jedni drugima preporučuju strpljenje.","samo nisu oni koji vjeruju i dobra djela čine, i koji jedni drugima Istinu preporučuju i koji jedni drugima preporučuju strpljenje.","samo nisu oni koji vjeruju i dobra djela čine, i koji jedni drugima Istinu preporučuju i koji jedni drugima preporučuju strpljenje."]

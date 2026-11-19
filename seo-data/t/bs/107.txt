@@ -1,0 +1,8 @@
+["Znaš li ti onoga koji onaj svijet poriče?","Pa to je onaj koji grubo odbija siroče,","i koji da se nahrani siromah – ne podstiče.","A teško onima koji, kada molitvu obavljaju,","molitvu svoju kako treba ne izvršavaju,","koji se samo pretvaraju","i nikome ništa ni u naruč ne daju!"]
+["Znaš li ti onoga koji onaj svijet poriče?","Šta misliš o onome koji Sud poriče?","Znaš li ti onoga koji Sud poriče?"]
+["Pa to je onaj koji grubo odbija siroče,","Pa to je onaj koji grubo odbija siroče,","Pa to je onaj koji grubo odbija siroče."]
+["i koji da se nahrani siromah – ne podstiče.","i koji da se nahrani siromah – ne podstiče.","i koji da se nahrani siromah - ne podstiče."]
+["A teško onima koji, kada molitvu obavljaju,","Pa teško klanjačima,","Pa teško klanjačima,"]
+["molitvu svoju kako treba ne izvršavaju,","onima koji su nemarni prema svome namazu,","onima koji su nemarni prema svome namazu."]
+["koji se samo pretvaraju","koji se samo ljudima pokazuju","koji se samo ljudima pokazuju"]
+["i nikome ništa ni u naruč ne daju!","i čak potrepštine koje se na posudbu daju oni ne daju!","čak potrepštine koje se na posudbu daju oni ne daju!"]

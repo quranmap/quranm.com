@@ -1,0 +1,7 @@
+["Dize: \"Ó renegadores da Fé!\"","\"Não adoro o que adorais.\"","\"Nem adorareis o que adoro.\"","\"Nem adorarei o que adorastes.\"","\"Nem adorareis o que adoro.\"","\"A vós vossa religião e, a mim, minha religião.\""]
+["Dize: \"Ó renegadores da Fé!\"","Dize: Ó incrédulos,"]
+["\"Não adoro o que adorais.\"","Não adoro o que adorais,"]
+["\"Nem adorareis o que adoro.\"","Nem vós adorais o que adoro."]
+["\"Nem adorarei o que adorastes.\"","E jamais adorarei o que adorais,"]
+["\"Nem adorareis o que adoro.\"","Nem vós adorareis o que adoro."]
+["\"A vós vossa religião e, a mim, minha religião.\"","Vós tendes a vossa religião e eu tenho a minha."]

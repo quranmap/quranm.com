@@ -1,0 +1,6 @@
+["1. Ha hoogeen labada gacmood ee Abuu-Lahab [1], hoogyeyna [2].","2. Waxna uma tarin maalkiisa iyo wuxuu kasbaday.","3. Wuxuu geli oo ku guban Naar olol badan.","4. Iyo marwadiisuba, xaabo siddada ah, (xanta, xinta iyo dirdirada badan),","5. Qoorteeda waxaa la yeeli xadhig adag xaskul la soohay (oo Naar) ah."]
+["1. Ha hoogeen labada gacmood ee Abuu-Lahab [1], hoogyeyna [2].","Waxaa khasaaray Gacmihii Abuulahab, halaagmayna."]
+["2. Waxna uma tarin maalkiisa iyo wuxuu kasbaday.","Waxna uma tarin Xoolihiisii iyo wuxuu kasbadayna."]
+["3. Wuxuu geli oo ku guban Naar olol badan.","Wuxuuna gali Naar Olal leh."]
+["4. Iyo marwadiisuba, xaabo siddada ah, (xanta, xinta iyo dirdirada badan),","Haweenaydiisii Qoryaha xambaari jirtayna (waxay gali Naar)."]
+["5. Qoorteeda waxaa la yeeli xadhig adag xaskul la soohay (oo Naar) ah.","Luqunteedana waxaa la yeeli Xadhig Liif ah."]

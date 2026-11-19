@@ -1,0 +1,7 @@
+["\"Ka ce \"Ina nẽman tsari ga Ubangijin mutãne.\"","\"Mamallakin mutane.\"","\"Abin bautãwar mutãne.\"","\"Daga sharrin mai sanya wasuwãsi, mai ɓoyewa.\"","\"Wanda ke sanya wasuwãsi a cikin ƙirãzan mutane.\"","\"Daga aljannu da mutane.\""]
+["\"Ka ce \"Ina nẽman tsari ga Ubangijin mutãne.\"","Ka ce \"Ina nẽman tsari ga Ubangijin mutãne.\""]
+["\"Mamallakin mutane.\"","\"Mamallakin mutane.\""]
+["\"Abin bautãwar mutãne.\"","\"Abin bautãwar mutãne.\""]
+["\"Daga sharrin mai sanya wasuwãsi, mai ɓoyewa.\"","\"Daga sharrin mai sanya wasuwãsi, mai ɓoyewa.\""]
+["\"Wanda ke sanya wasuwãsi a cikin ƙirãzan mutane.\"","\"Wanda ke sanya wasuwãsi a cikin ƙirãzan mutane.\""]
+["\"Daga aljannu da mutane.\"","\"Daga aljannu da mutane.\""]

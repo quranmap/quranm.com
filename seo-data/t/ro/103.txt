@@ -1,0 +1,4 @@
+["Pe amiază!","Omul este sortit pierzaniei!","Nu şi cei care cred însă, cei care săvârşesc fapte bune, cei care se îndeamnă întru adevăr, cei care se îndeamnă întru răbdare!"]
+["Pe amiază!","Jur pe timp![1]","Jur pe timp!"]
+["Omul este sortit pierzaniei!","Că omul va fi în pierdere,","Că omul va fi în pierdere,"]
+["Nu şi cei care cred însă, cei care săvârşesc fapte bune, cei care se îndeamnă întru adevăr, cei care se îndeamnă întru răbdare!","În afară de cei care cred și împlinesc fapte bune și se îndeamnă unul pe altul către Adevăr și se îndeamnă unul pe altul la răbdare.","Afară de aceia care cred şi împlinesc fapte bune şi se îndeamnă unul pe altul către Adevăr şi se îndeamnă unul pe altul la răbdare."]

@@ -1,0 +1,8 @@
+["Dini yalan sayan o kim­sə­ni gör­dünmü?","O elə adamdır ki, yetimi qovar","və heç kəsi kasıba əl tut­ma­ğa sövq etməz.","Vay halına namaz qılan­la­rın –","o kəslərin ki, onlar na­maz­larında səhlənkardırlar.","Onlar riyakardırlar","və az bir şey verməkdən belə im­tina edirlər."]
+["Dini yalan sayan o kim­sə­ni gör­dünmü?","(Ya Peyğəmbər!) Dini (haqq-hesab gününü) yalan hesab edəni (Əbu Cəhli) gördünmü?"]
+["O elə adamdır ki, yetimi qovar","O elə adamdır ki, yetimi itələyib qovar (haqqını verməz);"]
+["və heç kəsi kasıba əl tut­ma­ğa sövq etməz.","Və (xalqı) yoxsulu yedirtməyə rəğbətləndirməz (nə özü fəqiri yedirdər, nə də özgəsini qoyar)."]
+["Vay halına namaz qılan­la­rın –","Vay halına o namaz qılanların ki,"]
+["o kəslərin ki, onlar na­maz­larında səhlənkardırlar.","Onlar öz namazlarından qafildirlər (səhlənkarlıqları üzündən namazlarını vaxtlı-vaxtında qılmazlar);"]
+["Onlar riyakardırlar","Onlar (namazlarında) riyakarlıq edər,"]
+["və az bir şey verməkdən belə im­tina edirlər.","Və (xalqa) zəkat verməyi qadağan edərlər (yaxud xəsislik göstərib bir iş üçün qonum-qonşuya lazım olan qab-qacağı verməkdən imtina edərlər)."]

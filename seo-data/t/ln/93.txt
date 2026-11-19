@@ -1,0 +1,12 @@
+0
+["1. (Nalapi) na kobuta ya mokolo!"]
+["2. (Mpe na lapi) na butu ntango ezali kozipa biloko binso!"]
+["3. Nkolo nayo asundoli yo te mpe ayini yo te."]
+["4. Bomoyi ya suka ezali malamu тропа yo koleka bomoyi ya nsé."]
+["5. Nkolo nayo akopesa yo bolamu naye mpe okosepela."]
+["6. Akutaki yo mwana etike te тре ayambi yo?"]
+["7. Mpe akutaki yo te na libungi mpe akambi yo na nzela ya nsemba?"]
+["8. mpe akutaki yo te mobola mpe apesiyo bozwi?"]
+["9. Kasi тропа mwana etike konyokolo ye te."]
+["10. Mpe pona mosengi kobengana ye te."]
+["11. Mpe pona bolamu ya Nkolo nayo sakola yango."]

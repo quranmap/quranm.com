@@ -1,0 +1,7 @@
+["Hãy bảo (chúng): “Này hỡi những kẻ phủ nhận Allah!\"","\"Ta không tôn thờ những kẻ (thần linh) mà các ngươi tôn thờ.\"","“Các ngươi cũng sẽ không tôn thờ Đấng (Allah) mà Ta thờ phụng.\"","“Và Ta sẽ không là một tín đồ của kẻ mà các ngươi đang tôn thờ.\"","“Và các ngươi cũng sẽ không tôn thờ Đấng mà Ta đang thờ phụng.'","“Các ngươi có tôn giáo của các ngươi và Ta có tôn giáo của Ta.”"]
+["Hãy bảo (chúng): “Này hỡi những kẻ phủ nhận Allah!\"","(Hỡi Thiên Sứ Muhammad!) Ngươi hãy nói: “Này hỡi những kẻ vô đức tin!”"]
+["\"Ta không tôn thờ những kẻ (thần linh) mà các ngươi tôn thờ.\"","“Ta không thờ những thần linh (bục tượng) mà các người thờ phượng.”"]
+["“Các ngươi cũng sẽ không tôn thờ Đấng (Allah) mà Ta thờ phụng.\"","“Và các người cũng không thờ phượng Đấng mà Ta thờ phượng.”"]
+["“Và Ta sẽ không là một tín đồ của kẻ mà các ngươi đang tôn thờ.\"","“Và Ta chưa bao giờ là người thờ phượng những gì mà các người đã tôn thờ.”"]
+["“Và các ngươi cũng sẽ không tôn thờ Đấng mà Ta đang thờ phụng.'","“Và các người sẽ không thờ phượng Đấng mà Ta đang thờ phượng.”"]
+["“Các ngươi có tôn giáo của các ngươi và Ta có tôn giáo của Ta.”","“Các người có tôn giáo của các người và Ta có tôn giáo của Ta.”"]

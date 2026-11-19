@@ -1,0 +1,8 @@
+["Dini yalan sayanı gördün mü?","Öksüzü kakıştıran, yoksulu doyurmaya yanaşmayan kimse işte odur.","Öksüzü kakıştıran, yoksulu doyurmaya yanaşmayan kimse işte odur.","Vay o namaz kılanların haline ki:","Onlar kıldıkları namazdan gafildirler.","Onlar gösteriş yaparlar.","Onlar basit şeyleri dahi vermezler."]
+["Dini yalan sayanı gördün mü?","Hesap gününü yalanlayanı gördün mü?","Dini yalanlayanı gördün mü?","Dini yalanlayanı gördün mü?","Hesap gününü yalanlayanı gördün mü?"]
+["Öksüzü kakıştıran, yoksulu doyurmaya yanaşmayan kimse işte odur.","Yetimi itip kakan da işte odur.","İşte o, öksüzü iter, kakar.","İşte o, yetimi itip kakar,","Yetimi itip kakan işte odur."]
+["Öksüzü kakıştıran, yoksulu doyurmaya yanaşmayan kimse işte odur.","Ve yoksulu doyurmaya teşvik etmez.","Yoksulu doyurmaya önayak olmaz.","Yoksulu doyurmaya teşvik etmez;","Düşkünü doyurmaya teşvik etmez."]
+["Vay o namaz kılanların haline ki:","Vay o namaz kılanların haline ki:","Vay haline o namaz kılanların ki,","Yazıklar olsun o namaz kılanlara ki,","Öyleyse yazıklar olsun o namaz kılanlara!"]
+["Onlar kıldıkları namazdan gafildirler.","Onlar kıldıkları namazdan gafildirler.","Kıldıkları namazın değerine aldırış etmezler.","onlar namazlarını ciddiye almazlar.","Kıldıkları namazdan gafil olanlara,"]
+["Onlar gösteriş yaparlar.","Onlar gösteriş yaparlar.","Gösteriş yaparlar onlar,","Onlar gösteriş yapanlardır,","Gösteriş yapanlara,"]
+["Onlar basit şeyleri dahi vermezler.","Hem de maunu da vermeyip, engellerler.","Ve yardımlığı sakınırlar (zekatı vermezler).","hayra da mâni olurlar.","Ufak tefek (ödünç vermeye) bile engel olanlara…"]

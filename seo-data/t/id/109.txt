@@ -1,0 +1,7 @@
+["Katakanlah (Muhammad), \"Wahai orang-orang kafir!","aku tidak akan menyembah apa yang kamu sembah,","dan kamu bukan penyembah apa yang aku sembah,","dan aku tidak pernah menjadi penyembah apa yang kamu sembah,","dan kamu tidak pernah (pula) menjadi penyembah apa yang aku sembah.","Untukmu agamamu, dan untukku agamaku.\""]
+["Katakanlah (Muhammad), \"Wahai orang-orang kafir!","Katakanlah, \"Hai orang-orang kafir,","Katakanlah (Muhammad), “Wahai orang-orang kafir!"]
+["aku tidak akan menyembah apa yang kamu sembah,","Aku tidak akan menyembah apa yang kamu sembah.","Aku tidak akan menyembah apa yang kamu sembah,"]
+["dan kamu bukan penyembah apa yang aku sembah,","Dan kamu bukan penyembah Tuhan yang aku sembah.","Dan kamu bukan penyembah apa yang aku sembah,"]
+["dan aku tidak pernah menjadi penyembah apa yang kamu sembah,","Dan aku tidak pernah menjadi penyembah apa yang kamu sembah,","Dan aku tidak pernah menjadi penyembah apa yang kamu sembah,"]
+["dan kamu tidak pernah (pula) menjadi penyembah apa yang aku sembah.","dan kamu tidak pernah (pula) menjadi penyembah Tuhan yang aku sembah.","Dan kamu tidak pernah (pula) menjadi penyembah apa yang aku sembah."]
+["Untukmu agamamu, dan untukku agamaku.\"","Untukmulah agamamu dan untukkulah agamaku\".","Untukmu agamamu, dan untukku agamaku.”"]

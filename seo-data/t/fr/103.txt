@@ -1,0 +1,4 @@
+["Par le Temps !","L’homme est certes, en perdition,","sauf ceux qui croient et accomplissent les bonnes œuvres, s’enjoignent mutuellement la vérité et s’enjoignent mutuellement l’endurance."]
+["Par le Temps !","Par le Temps!","Par le Temps !"]
+["L’homme est certes, en perdition,","L’homme, en vérité, est en perdition,","L’homme, en vérité, court à sa perte,"]
+["sauf ceux qui croient et accomplissent les bonnes œuvres, s’enjoignent mutuellement la vérité et s’enjoignent mutuellement l’endurance.","à l’exception de ceux qui ont cru, ont accompli les bonnes œuvres, se sont recommandé la vérité, et se sont recommandé la patience.","à l’exception de ceux qui croient, font le bien, se recommandent mutuellement la vraie foi et se recommandent mutuellement la constance."]

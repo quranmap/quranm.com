@@ -1,0 +1,7 @@
+["Sema: Enyi makafiri!","Siabudu mnacho kiabudu;","Wala nyinyi hamuabudu ninaye muabudu.","Wala sitaabudu mnacho abudu.","Wala nyinyi hamuabudu ninaye muabudu.","Nyinyi mna dini yenu, nami nina Dini yangu."]
+["Sema: Enyi makafiri!","Sema: Enyi makafiri!"]
+["Siabudu mnacho kiabudu;","Siabudu mnachokiabudu;"]
+["Wala nyinyi hamuabudu ninaye muabudu.","Wala nyinyi hamuabudu ninayemuabudu."]
+["Wala sitaabudu mnacho abudu.","Wala sitaabudu mnachoabudu."]
+["Wala nyinyi hamuabudu ninaye muabudu.","Wala nyinyi hamuabudu ninayemuabudu."]
+["Nyinyi mna dini yenu, nami nina Dini yangu.","Nyinyi mna dini yenu, nami nina Dini yangu."]
