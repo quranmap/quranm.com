@@ -60,6 +60,9 @@ const normAr = (s) =>
     .replace(/ى/g, "ي")
     .replace(/\s+/g, "");
 
+// Zusatz-Schlüssel anderer Build-Skripte (z. B. meta.words) merken und später wieder einsetzen
+let OLD_META = {};
+try { OLD_META = JSON.parse(fs.readFileSync(path.join(OUT, "meta.json"), "utf8")); } catch {}
 // Nur die eigenen Kern-Daten löschen – Feature-Daten (seo-data/<feature>/) bleiben stehen.
 for (const d of ["q", "t", "topic", "meta.json"]) fs.rmSync(path.join(OUT, d), { recursive: true, force: true });
 fs.mkdirSync(OUT, { recursive: true });
@@ -176,6 +179,7 @@ const meta = {
 };
 for (const s of meta.surahs) Object.assign(s.meanings, SURAH_MEANINGS?.[s.n] || { en: s.en, de: s.de });
 for (const t of meta.themes) Object.assign(t.titles, THEME_TITLES?.[t.slug] || { en: t.en, de: t.de });
+for (const [k, v] of Object.entries(OLD_META)) if (!(k in meta)) meta[k] = v;
 fs.writeFileSync(path.join(OUT, "meta.json"), JSON.stringify(meta));
 
 const themeSizes = themes.map((t) => `${t.slug}:${t.refs.length}`).join(" ");
