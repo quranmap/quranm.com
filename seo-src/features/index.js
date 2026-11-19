@@ -8,4 +8,5 @@
 // Neue Features NUR hier unten importieren und anhängen (je eine Zeile).
 import widget from "./widget.js";
 import reciter from "./reciter.js";
-export const FEATURES = [widget, reciter];
+import juz from "./juz.js";
+export const FEATURES = [widget, reciter, juz];
