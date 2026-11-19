@@ -49,6 +49,7 @@ const UI = {
 };
 
 const text = (code, key) => (UI[code] || UI.en)[key] || UI.en[key];
+const stripQuranMarkers = (value) => String(value ?? "").replace(/[\u06DD\u06DE]/g, "").trim();
 const fmt = (template, vars) => template.replace(/\{(\w+)\}/g, (_, key) => vars[key] ?? "");
 const pad3 = (n) => String(n).padStart(3, "0");
 const pathHub = (c, r) => `/${c}${RECITER_ROOT}${r.slug}/`;
@@ -106,7 +107,7 @@ async function page({ ctx, m, lang, L, H, r, s, all }) {
   const trDir = lang.tr[0]?.d || lang.dir;
   const items = ar.map((t, i) => {
     const a = i + 1;
-    return `<article class="ay" id="a${a}"><a class="ref" href="${H.P.ayah(lang.code, s.n, a)}">${s.n}:${a}</a><p class="ar" lang="ar" dir="rtl">${H.esc(t)} <span class="end">۝${String(a)}۞</span></p><audio controls preload="none" src="${audioUrl(H, r, s, a)}" aria-label="${H.esc(fmt(text(lang.code, "listenTo"), { name: reciter }))}"></audio>${tr && tr[i] ? `<p class="tr" dir="${trDir}">${H.esc(tr[i])}</p>` : ""}</article>`;
+    return `<article class="ay" id="a${a}"><a class="ref" href="${H.P.ayah(lang.code, s.n, a)}">${s.n}:${a}</a><p class="ar" lang="ar" dir="rtl">${H.esc(stripQuranMarkers(t))} <span class="end">﴿${String(a)}﴾</span><span lang="ar" hidden>${H.esc(t)}</span></p><audio controls preload="none" src="${audioUrl(H, r, s, a)}" aria-label="${H.esc(fmt(text(lang.code, "listenTo"), { name: reciter }))}"></audio>${tr && tr[i] ? `<p class="tr" dir="${trDir}">${H.esc(tr[i])}</p>` : ""}</article>`;
   }).join("");
   const other = all.filter((x) => x.slug !== r.slug).map((x) => `<a class="chip" href="${pathPage(lang.code, x, s)}">${H.esc(reciterLabel(x, H))}</a>`).join("");
   const body = `<h1>${H.esc(fmt(text(lang.code, "pageTitle"), { name, n: s.n, reciter }).replace(/\s–.*$/, ""))}</h1><p class="lead">${H.esc(fmt(text(lang.code, "listenTo"), { name: reciter }))}</p><p class="actions"><a class="btn primary" href="${H.P.surah(lang.code, s)}">${H.esc(fmt(text(lang.code, "surah"), {}))}</a> ${H.readerBtn(L, s.n, 1)}</p><div class="ayahs">${items}</div><section><h2>${H.esc(text(lang.code, "other"))}</h2><div class="chips">${other}</div></section>`;

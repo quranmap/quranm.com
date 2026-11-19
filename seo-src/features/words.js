@@ -10,6 +10,16 @@ const pageUrl = (c, slug, p = 1) => `/${c}/root/${slug}/${p > 1 ? `${p}/` : ""}`
 const indexUrl = (c) => `/${c}/roots/`;
 const t = (c, key) => (UI[c] || UI.en)[key] || UI.en[key];
 const fmt = (s, values) => String(s).replace(/\{(\w+)\}/g, (_, k) => values[k] ?? "");
+const stripQuranMarkers = (value) => String(value ?? "").replace(/[\u06DD\u06DE]/g, "").trim();
+const occurrenceCount = (code, count) => {
+  if (code === "en") return `${count} ${count === 1 ? "Occurrence" : "Occurrences"}`;
+  if (code === "de") return `${count} ${count === 1 ? "Vorkommen" : "Vorkommen"}`;
+  if (code === "tr") return `${count} ${count === 1 ? "Kullanım" : "Kullanım"}`;
+  if (code === "fr") return `${count} ${count === 1 ? "occurrence" : "occurrences"}`;
+  if (code === "es") return `${count} ${count === 1 ? "ocurrencia" : "ocurrencias"}`;
+  if (code === "id") return `${count} ${count === 1 ? "kemunculan" : "kemunculan"}`;
+  return `× ${count}`;
+};
 export default {
   name: "words",
   async route({ ctx, m, lang, c, seg, H }) {
@@ -18,8 +28,11 @@ export default {
     if (!index) return null;
     const roots = JSON.parse(index);
     if (seg.length === 2 && seg[1] === "roots") {
-      const items = roots.map((r) => `<li><a href="${pageUrl(c, r.slug)}"><span lang="ar" dir="rtl">${H.esc(r.root)}</span><small>${r.count} ${H.esc(t(c, "occurrences"))}</small></a></li>`).join("");
-      const body = `<h1>${H.esc(t(c, "roots"))}</h1><p class="lead">${H.esc(t(c, "rootsIntro"))}</p><ol class="surahs">${items}</ol>`;
+      const groups = new Map();
+      for (const r of roots) { const letter = [...r.root][0] || ""; if (!groups.has(letter)) groups.set(letter, []); groups.get(letter).push(r); }
+      const jump = [...groups.keys()].map((letter) => `<a class="chip" href="#root-${H.esc(letter)}" lang="ar" dir="rtl">${H.esc(letter)}</a>`).join("");
+      const sections = [...groups].map(([letter, group]) => `<section id="root-${H.esc(letter)}"><h2 lang="ar" dir="rtl">${H.esc(letter)}</h2><ol class="surahs">${group.map((r) => `<li><a href="${pageUrl(c, r.slug)}"><span lang="ar" dir="rtl">${H.esc(r.root)}</span><small>${H.esc(occurrenceCount(c, r.count))}</small></a></li>`).join("")}</ol></section>`).join("");
+      const body = `<h1>${H.esc(t(c, "roots"))}</h1><p class="lead">${H.esc(t(c, "rootsIntro"))}</p><nav class="chips" aria-label="Root letters">${jump}</nav>${sections}`;
       return H.layout({ m, lang, L: H.strings(c), body, title: t(c, "indexTitle"), desc: t(c, "rootsIntro"), path: indexUrl(c), altPath: indexUrl, crumbs: [["quranm", "/"], [lang.native, `/${c}/`], [t(c, "roots"), indexUrl(c)]], hasArabic: true });
     }
     if (seg[1] !== "root" || (seg.length !== 3 && seg.length !== 4)) return null;
@@ -40,7 +53,8 @@ export default {
     const items = arabicPage.map((x, i) => {
       const tr = c === "ar" ? "" : languagePage[i].translation;
       const marked = new Set(x.w);
-      return `<article class="ay"><a class="ref" href="/${c}/${x.s}/${x.a}/">${x.s}:${x.a}</a><p class="ar" lang="ar" dir="rtl">${x.tokens.map((word, wi) => marked.has(wi + 1) ? `<b>${H.esc(word)}</b>` : H.esc(word)).join(" ")}</p>${tr ? `<p class="tr">${H.esc(tr)}</p>` : ""}</article>`;
+      const source = x.tokens.join(" ");
+      return `<article class="ay"><a class="ref" href="/${c}/${x.s}/${x.a}/">${x.s}:${x.a}</a><p class="ar" lang="ar" dir="rtl">${x.tokens.map((word, wi) => { const clean = stripQuranMarkers(word); return marked.has(wi + 1) ? `<b>${H.esc(clean)}</b>` : H.esc(clean); }).join(" ")} <span class="end">﴿${x.a}﴾</span><span lang="ar" hidden>${H.esc(source)}</span></p>${tr ? `<p class="tr">${H.esc(tr)}</p>` : ""}</article>`;
     }).join("");
     const pager = root.pages > 1 ? `<nav class="pager"><span>${p > 1 ? `<a rel="prev" href="${pageUrl(c, slug, p - 1)}">‹ ${H.esc(t(c, "prev"))}</a>` : ""}</span><span>${p < root.pages ? `<a rel="next" href="${pageUrl(c, slug, p + 1)}">${H.esc(t(c, "next"))} ›</a>` : ""}</span></nav>` : "";
     const lemmas = root.lemmas.map((l) => `<li lang="ar" dir="rtl"><b>${H.esc(l.lemma)}</b>${l.gloss ? ` <span dir="ltr">— ${H.esc(l.gloss)}</span>` : ""}</li>`).join("");

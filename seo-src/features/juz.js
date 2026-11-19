@@ -7,6 +7,7 @@ const UI = {
 };
 
 const labels = (code) => UI[code] || UI.en;
+const stripQuranMarkers = (value) => String(value ?? "").replace(/[\u06DD\u06DE]/g, "").trim();
 const pathFor = (c, type, n = "") => `/${c}/${type}/${n ? `${n}/` : ""}`;
 const parseRef = (ref) => ref.split(":").map(Number);
 
@@ -29,7 +30,7 @@ async function allText(ctx, H, refs, lang) {
       const line = files.tr[a] && JSON.parse(files.tr[a]);
       tr = Array.isArray(first) ? first[a - 1] : line?.[0];
     }
-    return { ref, ar, tr };
+    return { ref, ar: stripQuranMarkers(ar), sourceAr: ar, tr };
   });
 }
 
@@ -40,7 +41,7 @@ function surahList(m, lang, H, nums) {
   return nums.map((n) => {
     const s = m.surahs[n - 1];
     return `<a href="${H.P.surah(lang.code, s)}">${H.esc(H.surahName(m, lang.code, s))}</a>`;
-  }).join(", ");
+  }).join("");
 }
 function pager(H, lang, type, n, max, L) {
   return `<nav class="pn" aria-label="${H.esc(L[type])}">${n > 1 ? `<a rel="prev" href="${pathFor(lang.code, type, n - 1)}">‹ ${H.esc(L.prev)}</a>` : "<span></span>"}${n < max ? `<a rel="next" href="${pathFor(lang.code, type, n + 1)}">${H.esc(L.next)} ›</a>` : ""}</nav>`;
@@ -56,12 +57,12 @@ async function detail({ ctx, m, lang, L, H, type, n, max }) {
   const items = texts.map((v) => {
     const [s, a] = parseRef(v.ref);
     const link = `<a class="ref" href="${H.P.ayah(lang.code, s, a)}">${v.ref}</a>`;
-    return `<article class="ay"><div>${link}</div><p class="ar" lang="ar" dir="rtl">${H.esc(v.ar || "")}</p>${!tooLong && v.tr ? `<p class="tr" dir="${trDir}">${H.esc(v.tr)}</p>` : ""}</article>`;
+    return `<article class="ay"><div>${link}</div><p class="ar" lang="ar" dir="rtl">${H.esc(v.ar || "")} <span class="end">﴿${a}﴾</span><span lang="ar" hidden>${H.esc(v.sourceAr || "")}</span></p>${!tooLong && v.tr ? `<p class="tr" dir="${trDir}">${H.esc(v.tr)}</p>` : ""}</article>`;
   }).join("");
   const s = m.surahs[startS - 1];
   const kind = L[type];
   const name = type === "juz" ? ` <span class="h1ar" lang="ar" dir="rtl">${H.esc(seg.name)}</span>` : "";
-  const body = `<h1>${H.esc(kind)} ${n}${name}</h1><dl class="info"><div><dt>${H.esc(L.range)}</dt><dd>${H.esc(rangeText(seg, L))}</dd></div><div><dt>${H.esc(L.surahs)}</dt><dd>${surahList(m, lang, H, seg.surahs)}</dd></div><div><dt>${H.esc(L.arabic)}</dt><dd>${seg.count} ${H.esc(L.translation)}</dd></div></dl><p class="actions">${H.readerBtn(L, startS, startA)}</p>${tooLong ? `<p class="note">${H.esc(L.arabic)} · ${seg.count}</p>` : ""}<div class="ayahs">${items}</div>${pager(H, lang, type, n, max, L)}`;
+  const body = `<h1>${H.esc(kind)} ${n}${name}</h1><dl class="info"><div><dt>${H.esc(L.range)}</dt><dd>${H.esc(rangeText(seg, L))}</dd></div><div><dt>${H.esc(L.surahs)}</dt><dd class="surah-links">${surahList(m, lang, H, seg.surahs)}</dd></div><div><dt>${H.esc(L.arabic)}</dt><dd>${seg.count} ${H.esc(L.translation)}</dd></div></dl><p class="actions">${H.readerBtn(L, startS, startA)}</p>${tooLong ? `<p class="note">${H.esc(L.arabic)} · ${seg.count}</p>` : ""}<div class="ayahs">${items}</div>${pager(H, lang, type, n, max, L)}`;
   const path = pathFor(lang.code, type, n);
   return H.layout({ m, lang, L, body, title: `${kind} ${n} | quranm`, desc: `${kind} ${n}: ${rangeText(seg, L)}.`, path, altPath: (c) => pathFor(c, type, n), crumbs: [["quranm", "/"], [lang.native, H.P.hub(lang.code)], [kind, pathFor(lang.code, type)], [`${kind} ${n}`, path]] });
 }
