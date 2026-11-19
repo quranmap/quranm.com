@@ -43,11 +43,11 @@ for (const code of languages) {
 const candidates = [];
 for (const s of curatedSurahs) {
   const arabic = readLine(path.join(repo, "seo-data", "q", `${s}.txt`), 0);
-  for (let a = 1; a < arabic.length; a++) {
+  for (let a = 1; a <= arabic.length; a++) {
     const ref = `${s}:${a}`;
     const row = rows.get(ref);
     if (!row || languages.some((code) => !row.translations[code] || words(row.translations[code]) > 40)) continue;
-    candidates.push({ ref, s, a, arabic: arabic[a], translations: row.translations });
+    candidates.push({ ref, s, a, arabic: arabic[a - 1], translations: row.translations });
   }
 }
 const byRef = new Map(candidates.map((x) => [x.ref, x]));
