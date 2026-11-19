@@ -6,7 +6,7 @@ const t = (code, key) => (UI[code] || UI.en)[key] || UI.en[key];
 const text = (code, en, de) => code === "de" ? de : en;
 const factPath = (c, slug) => `/${c}/facts/${slug}/`;
 const slugify = (s) => String(s).toLowerCase().replace(/[’'']/g, "").replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
-const PROPHETS = ["Adam", "Idris", "Nuh", "Hud", "Salih", "Ibrahim", "Lut", "Ismail", "Ishaq", "Yaqub", "Yusuf", "Ayyub", "Shuayb", "Musa", "Harun", "Dhul-Kifl", "Dawud", "Sulayman", "Ilyas", "Al-Yasa", "Yunus", "Zakariya", "Yahya", "Isa", "Muhammad"];
+const PROPHETS = ["Adam", "Idris", "Nuh", "Salih", "Ibrahim", "Lut", "Ismail", "Ishaq", "Yaqub", "Yusuf", "Ayyub", "Shuayb", "Musa", "Harun", "Dhul-Kifl", "Dawud", "Sulayman", "Ilyas", "Al-Yasa", "Yunus", "Zakariya", "Yahya", "Isa", "Muhammad"];
 const titleFor = (f, code) => `${f.question} | quranm`;
 const displayName = (H, m, c, s) => H.surahName(m, c, s);
 const faq = (f) => ({ "@context": "https://schema.org", "@type": "FAQPage", mainEntity: [{ "@type": "Question", name: f.question, acceptedAnswer: { "@type": "Answer", text: f.answer } }] });
@@ -15,7 +15,7 @@ function localizedFact(fact, code, name, s) {
     if (fact.type === "ayah-count") return { ...fact, question: `Wie viele Verse hat die Sure ${name}?`, answer: `${name} hat ${s.ayahs} Verse.` };
     if (fact.type === "revelation-place") return { ...fact, question: `Ist die Sure ${name} mekkanisch oder medinensisch?`, answer: `${name} ist ${fact.place === "M" ? "mekkanisch" : "medinensisch"}.` };
     if (fact.type === "named-ayah") return { ...fact, question: `In welcher Sure und in welchem Vers steht ${fact.name}?`, answer: `${fact.name} steht im Quran ${fact.ref}.` };
-    if (fact.type === "prophet") return { ...fact, question: `Wo wird ${fact.name} im Quran erwähnt?`, answer: `${fact.name} wird in ${fact.count} Versen des Quran erwähnt.` };
+    if (fact.type === "prophet") return { ...fact, question: `Wo wird ${fact.name} im Quran erwähnt?`, answer: `${fact.name} wird im Quran namentlich ${fact.occurrences}-mal in ${fact.ayahs} Versen erwähnt.` };
     if (fact.type === "quran-count") return { ...fact, question: "Wie viele Suren, Verse und Wörter hat der Quran?", answer: `Der Quran hat ${fact.surahs} Suren, ${fact.verses} Verse und ${fact.words} durch Leerzeichen getrennte Wörter in den arabischen Textdaten des Repositoriums.` };
   }
   if (fact.s) {
