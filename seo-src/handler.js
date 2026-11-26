@@ -357,8 +357,12 @@ function page404(m, lang) {
 }
 
 // ---------------------------------------------------------------- sitemaps
+// Only these languages are listed in /sitemap.xml so Google spends its crawl budget on them first
+// (new domain: 78 langs x ~8.7k URLs = 680k URLs were "discovered, not indexed").
+// /sitemaps/<lang>-1.xml still works for every language; add more codes here once these are indexed.
+const SITEMAP_LANGS = ["ar", "en", "de", "tr", "ur", "id", "fr", "es"];
 function sitemapIndex(m) {
-  const items = m.langs.map((l) => `<sitemap><loc>${SITE}/sitemaps/${l.code}-1.xml</loc></sitemap>`).join("");
+  const items = m.langs.filter((l) => SITEMAP_LANGS.includes(l.code)).map((l) => `<sitemap><loc>${SITE}/sitemaps/${l.code}-1.xml</loc></sitemap>`).join("");
   return `<?xml version="1.0" encoding="UTF-8"?>\n<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">${items}</sitemapindex>\n`;
 }
 export function sitemapUrls(m, l) {
