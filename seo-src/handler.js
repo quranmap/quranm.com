@@ -10,7 +10,7 @@ import { CSS } from "./style.js";
 import { FEATURES } from "./features/index.js";
 
 const SITE = "https://quranm.com";
-const CODE_VERSION = "7";
+const CODE_VERSION = "8";
 const AUDIO = "https://audio.quranm.com";
 const RECITER = "Mishari%20Rashid%20al%20Afasy";
 const TOPIC_PAGE = 50;
